@@ -1,7 +1,4 @@
 <?php
-
-
-
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
@@ -18,12 +15,9 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
     case 'home':
-        showHome();
-        break;
-    case 'tienda':
-        sumar($params[1], $params[2]);
-        break;
-    case 'login':
+        $controller = new TaskController();
+        $controller->showTasks();
+    case 'singup':
         break;
     default:
         echo('404 Page not found');

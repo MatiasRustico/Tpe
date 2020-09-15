@@ -28,16 +28,10 @@
         <div class="desplegable">
             <ul class="menu">
                 <li>
-                    <a href="index.html">Inicio</a>
+                    <button class="jsCartelera botonSFondo">Home</button>
                 </li>
                 <li>
-                    <button class="jsCartelera botonSFondo">Cartelera</button>
-                </li>
-                <li>
-                    <button class="jsTienda botonSFondo">Tienda</button>
-                </li>
-                <li>
-                    <button class="jsUsuarios botonSFondo">Usuarios</button>
+                    <button class="jsTienda botonSFondo">sing up</button>
                 </li>
             </ul>
         </div>
