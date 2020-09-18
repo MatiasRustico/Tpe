@@ -1,7 +1,10 @@
 <?php
 
-class GamesModel {
+class GamesModel { 
 
 
-    
+
+
+
+
 }

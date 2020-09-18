@@ -1,6 +1,7 @@
 <?php
 include_once "app/views/games.view.php";
 
+
 class GamesController {
 
     private $model;
@@ -8,10 +9,21 @@ class GamesController {
 
     function __construct() {
         $this->view = new GamesView ();
+     
     }
 
     function showHome(){
         $this->view->showHome();
+        
+    }
+
+    function showLogIn(){
+        $this->view->showLogIn();
+        
+    }
+
+    function showMarket(){
+        $this->view->showMarket();
         
     }
     
