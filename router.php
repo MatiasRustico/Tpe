@@ -20,13 +20,17 @@ switch ($params[0]) {
         $controller = new GamesController();
         $controller->showHome();
         break;
-    case 'login':
-        $controller = new GamesController();
-        $controller->showLogIn();
-        break;
     case 'market':
         $controller = new GamesController();
         $controller->showMarket();
+        break;
+    case 'games':
+        $controller = new GamesController();
+        $controller->showGames();
+        break;
+    case 'login':
+        $controller = new GamesController();
+        $controller->showLogIn();
         break;
     default:
         echo('404 Page not found');

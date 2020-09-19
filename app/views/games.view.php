@@ -66,6 +66,88 @@ class GamesView {
         include_once 'templates/footer.php';
     }
 
+    function showGames() {
+
+        //incluimos el header
+        include_once 'templates/header.php';
+
+        echo ('
+        <article class="tablausuarios">
+        <section>
+    
+            <button id="js-mostrar">Mostrar</button>
+            <button id="js-guardar">Guardar</button>
+    
+    
+            <table id="tabla">
+                <thead>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Categoria
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Valoracion
+                    </th>
+                    <th>
+                        -Borrar-
+                    </th>
+                    <th>
+                        -Editar-
+                    </th>
+    
+                </thead>
+                <tbody id="ingresardatos">
+                    <!--Generado Por Javascript-->
+                </tbody>
+            </table>
+        </section>
+    
+        <section>
+    
+            <form id="formulariousuarios" class="formulariousuarios">
+                <p>--developers only--</p>
+                <label for="nombre">Nombre</label>
+                <input id="nombre" name="nombre" type="text" placeholder="Ingrese nombre del usuario" required>
+    
+                <label for="usuario">Nombre de Usuario</label>
+                <input id="usuario" name="usuario" type="text" placeholder="Ingrese nametag del usuario" required>
+    
+                <label for="juego">Juego Favorito</label>
+                <input id="juego" name="juego" type="text" placeholder="Ingrese juego del usuario" required>
+    
+                <label for="horas">Horas jugadas</label>
+                <input id="horas" name="horas" type="number" placeholder="Ingrese horas del usuario" required>
+                <p>si tiene mas de 1000 horas se destacara</p>
+                <div id="respuesta"></div>
+                <button id="js-guardard" class="botoningreso">Agregar Usuario nuevo</button>
+                <button id="borrarusuarios" class="botoningreso">Borrar</button>
+                <button id="agregarx3" class="botoningreso">Agregar x3</button>
+            </form>
+        </section>
+        <section class="informacionadicional">
+            <ul>
+                <li>Los usuarios tienen un registro en la base de datos</li>
+                <li>los usuarios no pueden modificar la tabla</li>
+                <li>Solo los desarrolladores pueden modificar la tabla</li>
+            </ul>
+        </section>
+    
+    </article>
+        ');
+
+
+        //incuimos el footer
+        include_once 'templates/footer.php';
+    }
+
     function showLogIn() {
 
               echo ('       

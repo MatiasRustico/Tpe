@@ -26,5 +26,10 @@ class GamesController {
         $this->view->showMarket();
         
     }
+
+    function showGames(){
+        $this->view->showGames();
+        
+    }
     
 }

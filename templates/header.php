@@ -34,6 +34,9 @@
                 <a href="http://localhost/proyectos/tpe/market" class="jsCartelera botonSFondo">Market</a>
                 </li>
                 <li>
+                <a href="http://localhost/proyectos/tpe/games" class="jsCartelera botonSFondo">Games</a>
+                </li>
+                <li>
                 <a href="http://localhost/proyectos/tpe/login" class="jsCartelera botonSFondo">Log in</a>
                 </li>
             </ul>
