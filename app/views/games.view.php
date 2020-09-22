@@ -104,8 +104,7 @@ class GamesView {
                     
 
         foreach ($games as $game){
-            $idtemp = $game->id;
-
+    
             echo ('<tr>');
 
             // nombre

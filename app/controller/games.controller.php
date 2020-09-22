@@ -1,6 +1,6 @@
 <?php
 include_once "app/views/games.view.php";
-include_once "app/models/algo.php";
+include_once "app/models/games.model.php";
 
 
 class GamesController {
@@ -29,7 +29,7 @@ class GamesController {
     }
 
     function showGames(){
-        $games = $this->model->getGames();
+        $games = $this->model->getGames(); //agarra los datos de la database
         $this->view->showGames($games);
         
     }
@@ -47,11 +47,11 @@ class GamesController {
 
         $id = $this->model->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
 
-        header("Location: " . BASE_URL . "/games"); 
+        header("Location: " . BASE_URL . "games"); 
     }
 
     function deleteGame($id){
-        $this->model->removegame($id);
-        header("Location: " . BASE_URL . "/games"); 
+        $this->model->removeGame($id);
+        header("Location: " . BASE_URL . "games"); 
     }
 }

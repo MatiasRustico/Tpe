@@ -32,7 +32,11 @@ switch ($params[0]) {
         $controller = new GamesController();
         $controller->showLogIn();
         break;
-    case 'insert':
+
+
+
+        //accio
+    case 'insert': //se va a ejecutar cuando le des ok al formulario
         $controller = new GamesController();
         $controller->insertGame();
         break;

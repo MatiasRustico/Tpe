@@ -1,4 +1,4 @@
-<?php
+G<?php
 
 class GamesModel { 
 
@@ -7,7 +7,7 @@ class GamesModel {
     function __construct() {
         // 1. Abro la conexión
        $this->db = $this->connect();
-   }
+    }
 
 
     private function connect(){
@@ -37,7 +37,7 @@ class GamesModel {
         return $this->db->lastInsertId();
     }
 
-    function removegame($id){
+    function removeGame($id){
         $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
         $query->execute([$id]);
 
