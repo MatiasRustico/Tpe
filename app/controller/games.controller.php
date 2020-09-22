@@ -33,5 +33,25 @@ class GamesController {
         $this->view->showGames($games);
         
     }
-    
+    function insertGame(){
+        $nombre = $_POST['nombre'];
+        $precio = $_POST['precio'];
+        $categoria = $_POST['categoria'];
+        $valoracion = $_POST['valoracion'];
+        $descripcion = $_POST['descripcion'];
+
+        if (empty($nombre) || empty($precio) || empty($categoria) || empty($valoracion)) {
+            $this->view->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        $id = $this->model->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
+
+        header("Location: " . BASE_URL . "/games"); 
+    }
+
+    function deleteGame($id){
+        $this->model->removegame($id);
+        header("Location: " . BASE_URL . "/games"); 
+    }
 }

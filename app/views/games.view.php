@@ -104,6 +104,8 @@ class GamesView {
                     
 
         foreach ($games as $game){
+            $idtemp = $game->id;
+
             echo ('<tr>');
 
             // nombre
@@ -130,6 +132,12 @@ class GamesView {
             echo ('<td>');
             echo ($game->valoracion);
             echo ('</td>');
+
+            echo ('<td>');
+            echo ('<a href="delete/'.  $game->id . '  "> Eliminar</a>');
+            echo ('</td>');
+
+
             echo ('</tr>');
         }
 
@@ -137,28 +145,11 @@ class GamesView {
             </table>
             </section>
         
-            <section>
+            <section>');
         
-                <form id="formulariousuarios" class="formulariousuarios">
-                    <p>--developers only--</p>
-                    <label for="nombre">Nombre</label>
-                    <input id="nombre" name="nombre" type="text" placeholder="Ingrese nombre del usuario" required>
-        
-                    <label for="usuario">Nombre de Usuario</label>
-                    <input id="usuario" name="usuario" type="text" placeholder="Ingrese nametag del usuario" required>
-        
-                    <label for="juego">Juego Favorito</label>
-                    <input id="juego" name="juego" type="text" placeholder="Ingrese juego del usuario" required>
-        
-                    <label for="horas">Horas jugadas</label>
-                    <input id="horas" name="horas" type="number" placeholder="Ingrese horas del usuario" required>
-                    <p>si tiene mas de 1000 horas se destacara</p>
-                    <div id="respuesta"></div>
-                    <button id="js-guardard" class="botoningreso">Agregar Usuario nuevo</button>
-                    <button id="borrarusuarios" class="botoningreso">Borrar</button>
-                    <button id="agregarx3" class="botoningreso">Agregar x3</button>
-                </form>
-            </section>
+        include_once "templates/form.php";
+
+        echo    (' </section>
             <section class="informacionadicional">
                 <ul>
                     <li>Los usuarios tienen un registro en la base de datos</li>
@@ -208,5 +199,10 @@ class GamesView {
         </section>
     </article>
         ');
+    }
+
+
+    function showError($ms){
+        echo ($ms);
     }
 }

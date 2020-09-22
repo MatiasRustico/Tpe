@@ -24,8 +24,22 @@ class GamesModel {
         $query = $this->db->prepare('SELECT * FROM juegos');
         $query->execute();
         // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
-        $tasks = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de tareas
+        $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de tareas
 
-        return $tasks;
+        return $games;
+    }
+
+    function addGame($nombre, $precio,  $categoria, $descripcion, $valoracion){
+        //agregar a la base de datos
+        $query = $this->db->prepare('INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion) VALUES (?,?,?,?,?)');
+        $query->execute([$nombre, $precio,  $categoria, $descripcion, $valoracion]);
+
+        return $this->db->lastInsertId();
+    }
+
+    function removegame($id){
+        $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
+        $query->execute([$id]);
+
     }
 }

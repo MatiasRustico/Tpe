@@ -32,6 +32,15 @@ switch ($params[0]) {
         $controller = new GamesController();
         $controller->showLogIn();
         break;
+    case 'insert':
+        $controller = new GamesController();
+        $controller->insertGame();
+        break;
+    case 'delete':
+        $controller = new GamesController();
+        $id = $params[1];
+        $controller->deleteGame($id);
+        break;
     default:
         echo('404 Page not found');
         break;
