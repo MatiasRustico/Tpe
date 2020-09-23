@@ -95,10 +95,7 @@ class GamesView {
                     <th>
                         -Borrar-
                     </th>
-                    <th>
-                        -Editar-
-                    </th>
-    
+                    
                 </thead>
                 <tbody id="ingresardatos">');
                     
@@ -114,7 +111,7 @@ class GamesView {
 
             // precio
             echo ('<td>');
-            echo ($game->precio);
+            echo ($game->precio . ' $');
             echo ('</td>');
 
             // categoria id
@@ -128,34 +125,21 @@ class GamesView {
                     echo ($categorie->nombre);
                 }
             }
-
-            /*switch ($game->id_categoria){
-                case '1':
-                    echo ('-FPS');
-                    break;
-                case '2':
-                    echo ('-MMORPG');
-                    break;
-                default:
-                    echo ('-Null');
-                    break;
-            }*/
-
-            
+ 
             echo ('</td>');
 
             // descripcion
             echo ('<td>');
-            echo ($game->descripcion);
+            echo ($game->descripcion) ;
             echo ('</td>');
 
             // valoracion
             echo ('<td>');
-            echo ($game->valoracion);
+            echo ($game->valoracion . "⭐");
             echo ('</td>');
 
             echo ('<td>');
-            echo ('<a href="delete/'.  $game->id . '  "> Eliminar</a>');
+            echo ('<a href="delete/'.  $game->id . ' " class="filtro"> Eliminar</a>');
             echo ('</td>');
 
 

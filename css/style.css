@@ -472,6 +472,10 @@ th {
     border-radius: 5px;
 }
 
+.filtro a {
+    text-decoration: none;
+}
+
 .filtrar {
     color: white;
     font-weight: bold;
