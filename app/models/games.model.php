@@ -24,7 +24,7 @@ class GamesModel {
         $query = $this->db->prepare('SELECT * FROM juegos');
         $query->execute();
         // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
-        $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de tareas
+        $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de juegos
 
         return $games;
     }
@@ -41,5 +41,15 @@ class GamesModel {
         $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
         $query->execute([$id]);
 
+    }
+
+    function getCategories(){
+        // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
+        $query = $this->db->prepare('SELECT * FROM categoria');
+        $query->execute();
+        // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
+        $categories = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de categorias
+
+        return $categories;
     }
 }

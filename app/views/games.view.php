@@ -66,7 +66,7 @@ class GamesView {
         include_once 'templates/footer.php';
     }
 
-    function showGames($games) {
+    function showGames($games, $categories) {
 
         //incluimos el header
         include_once 'templates/header.php';
@@ -119,7 +119,29 @@ class GamesView {
 
             // categoria id
             echo ('<td>');
-            echo ($game->id_categoria);
+            //echo ($game->id_categoria);
+            
+        
+
+            foreach ($categories as $categorie){
+                if ($categorie->id == $game->id_categoria){
+                    echo ($categorie->nombre);
+                }
+            }
+
+            /*switch ($game->id_categoria){
+                case '1':
+                    echo ('-FPS');
+                    break;
+                case '2':
+                    echo ('-MMORPG');
+                    break;
+                default:
+                    echo ('-Null');
+                    break;
+            }*/
+
+            
             echo ('</td>');
 
             // descripcion
@@ -146,7 +168,25 @@ class GamesView {
         
             <section>');
         
-        include_once "templates/form.php";
+
+
+
+        include_once "templates/form.up.php";
+        echo('<select name="categoria" class="form-control">');
+        
+    
+        foreach ($categories as $categorie){
+            echo ('<option value=" '. $categorie->id .' "> '. $categorie->nombre .' </option>');   
+        }
+        
+
+        echo('</select>');
+        include_once "templates/form.down.php";
+
+
+
+
+
 
         echo    (' </section>
             <section class="informacionadicional">

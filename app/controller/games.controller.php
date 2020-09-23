@@ -30,9 +30,12 @@ class GamesController {
 
     function showGames(){
         $games = $this->model->getGames(); //agarra los datos de la database
-        $this->view->showGames($games);
+        $categories = $this->model->getCategories(); //agarra los datos de categorias
+        $this->view->showGames($games, $categories);
         
     }
+
+    
     function insertGame(){
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];

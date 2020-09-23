@@ -16,6 +16,7 @@ $params = explode('/', $action);
 
 // determina que camino seguir según la acción
 switch ($params[0]) {
+
     case 'home':
         $controller = new GamesController();
         $controller->showHome();
@@ -33,9 +34,6 @@ switch ($params[0]) {
         $controller->showLogIn();
         break;
 
-
-
-        //accio
     case 'insert': //se va a ejecutar cuando le des ok al formulario
         $controller = new GamesController();
         $controller->insertGame();
