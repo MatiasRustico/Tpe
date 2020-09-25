@@ -249,54 +249,69 @@ class GamesView {
                 
             }
         }
+
         echo ('</div>');
         
 
+        echo ('
+            <article class="tablausuarios">
+            <section>
+        '); 
 
+       
+
+       
+       
         include_once 'templates/headerTable.php';
-        
-        //-------------------------------------------------------------------------------
+                    
         foreach ($games as $game){
+
             if ($idSelected == $game->id_categoria){
 
-                //abro tr
                 if ($game->valoracion == 5 ){
                     echo ('<tr class="logroHoras">');
                 }else{
                     echo ('<tr>');
                 }
-
+    
                 // nombre
                 echo ('<td>');
                 echo ($game->nombre);
                 echo ('</td>');
-
+    
                 // precio
                 echo ('<td>');
                 echo ($game->precio . ' $');
                 echo ('</td>');
-
+    
                 // categoria id
                 echo ('<td>');
+                //echo ($game->id_categoria);
+                
+            
+    
                 foreach ($categories as $categorie){
                     if ($categorie->id == $game->id_categoria){
-
+    
+                        //echo ($categorie->nombre);
+    
                         echo ('<a href="categories/' . $categorie->nombre .'" class="filtro"> '. $categorie->nombre .'</a>');
                         
                     }
                 }
+     
                 echo ('</td>');
-
+    
                 // descripcion
                 echo ('<td>');
                 echo ($game->descripcion) ;
                 echo ('</td>');
-
+    
                 // valoracion
                 echo ('<td>');
-
+    
                 //echo ($game->valoracion . "⭐");
-
+    
                 if  ($game->valoracion == 1){
                     echo ("⭐");
                 }else if ($game->valoracion == 2){
@@ -308,22 +323,30 @@ class GamesView {
                 }else if ($game->valoracion == 5){
                     echo ("⭐⭐⭐⭐⭐");
                 }
-
+    
                 echo ('</td>');
-
+    
                 echo ('<td>');
                 echo ('<a href="delete/'.  $game->id . ' ">🗑️</a>');
                 echo ('</td>');
-                echo ('</td>');
-                
+    
+    
                 echo ('</tr>');
-            }
 
-            echo(' </tbody>
-                </table>
-                ');
+            }
         }
+
+        echo(' </tbody>
+            </table>
+            </section>');
+        
+        echo('<section>');
+        
+
+        
+        //incuimos el footer
         include_once 'templates/footer.php';
+    
 
     }//termina funcion
 
