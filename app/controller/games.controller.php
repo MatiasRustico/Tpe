@@ -57,4 +57,10 @@ class GamesController {
         $this->model->removeGame($id);
         header("Location: " . BASE_URL . "games"); 
     }
+
+    function showCategorieItem($CategorieSelected){
+        $games = $this->model->getGames();
+        $categories = $this->model->getCategories();
+        $this->view->showCategorie($categories, $games, $CategorieSelected);
+    }
 }

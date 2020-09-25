@@ -1,7 +1,7 @@
 <?php
 
 class GamesView {
-
+    
     function showHome() {
 
         //incluimos el header
@@ -72,37 +72,26 @@ class GamesView {
         include_once 'templates/header.php';
 
         echo ('
-        <article class="tablausuarios">
-        <section>
+            <article class="tablausuarios">
+            <section>
+        '); 
 
-            <table id="tabla">
-                <thead>
-                    <th>
-                        Nombre
-                    </th>
-                    <th>
-                        Precio
-                    </th>
-                    <th>
-                        Categoria
-                    </th>
-                    <th>
-                        Descripcion
-                    </th>
-                    <th>
-                        Valoracion
-                    </th>
-                    <th>
-                        -Borrar-
-                    </th>
-                    
-                </thead>
-                <tbody id="ingresardatos">');
-                    
+       
 
+        echo ('<div class="categorieItem">');
+        foreach ($categories as $categorie){
+            echo ('<a href="categories/' . $categorie->nombre .'" class="filtro"> '. $categorie->nombre .'</a>');
+        }
+        echo ('</div>');
+       
+        include_once 'templates/headerTable.php';
+                    
         foreach ($games as $game){
-    
-            echo ('<tr>');
+            if ($game->valoracion == 5 ){
+                echo ('<tr class="logroHoras">');
+            }else{
+                echo ('<tr>');
+            }
 
             // nombre
             echo ('<td>');
@@ -122,7 +111,11 @@ class GamesView {
 
             foreach ($categories as $categorie){
                 if ($categorie->id == $game->id_categoria){
-                    echo ($categorie->nombre);
+
+                    //echo ($categorie->nombre);
+
+                    echo ('<a href="categories/' . $categorie->nombre .'" class="filtro"> '. $categorie->nombre .'</a>');
+                    
                 }
             }
  
@@ -135,11 +128,25 @@ class GamesView {
 
             // valoracion
             echo ('<td>');
-            echo ($game->valoracion . "⭐");
+
+            //echo ($game->valoracion . "⭐");
+
+            if  ($game->valoracion == 1){
+                echo ("⭐");
+            }else if ($game->valoracion == 2){
+                echo ("⭐⭐");
+            }else if ($game->valoracion == 3){
+                echo ("⭐⭐⭐");
+            }else if ($game->valoracion == 4){
+                echo ("⭐⭐⭐⭐");
+            }else if ($game->valoracion == 5){
+                echo ("⭐⭐⭐⭐⭐");
+            }
+
             echo ('</td>');
 
             echo ('<td>');
-            echo ('<a href="delete/'.  $game->id . ' " class="filtro"> Eliminar</a>');
+            echo ('<a href="delete/'.  $game->id . ' ">🗑️</a>');
             echo ('</td>');
 
 
@@ -148,13 +155,10 @@ class GamesView {
 
         echo(' </tbody>
             </table>
-            </section>
+            </section>');
         
-            <section>');
+        echo('<section>');
         
-
-
-
         include_once "templates/form.up.php";
         echo('<select name="categoria" class="form-control">');
         
@@ -167,24 +171,7 @@ class GamesView {
         echo('</select>');
         include_once "templates/form.down.php";
 
-
-
-
-
-
-        echo    (' </section>
-            <section class="informacionadicional">
-                <ul>
-                    <li>Los usuarios tienen un registro en la base de datos</li>
-                    <li>los usuarios no pueden modificar la tabla</li>
-                    <li>Solo los desarrolladores pueden modificar la tabla</li>
-                </ul>
-            </section>
         
-        </article>
-        ');
-
-
         //incuimos el footer
         include_once 'templates/footer.php';
     }
@@ -228,4 +215,116 @@ class GamesView {
     function showError($ms){
         echo ($ms);
     }
+
+
+    //Pasar por parametro $categories y $games
+    function showCategorie($categories, $games, $CategorieSelected){
+        
+        include_once 'templates/header.php';
+
+        echo ('<div class="categorieItem">');
+        foreach ($categories as $categorie){
+            echo ('<a href="categories/' . $categorie->nombre .'" class="filtro"> '. $categorie->nombre .'</a>');
+        }
+        echo ('</div>');
+
+
+        echo ('<div class="formulariousuarios">');
+
+        //nombre de la categoria
+        echo('
+            <h1> ' . $CategorieSelected . ' <h1>
+        ');
+
+        //Descripcion de la categoria
+
+     
+
+        foreach ($categories as $categorie){
+            if ($categorie->nombre == $CategorieSelected){
+
+                $idSelected = $categorie->id;
+
+                echo ('<p>' . $categorie->descripción . '</p>' );
+                
+            }
+        }
+        echo ('</div>');
+        
+
+
+        include_once 'templates/headerTable.php';
+        
+        //-------------------------------------------------------------------------------
+        foreach ($games as $game){
+            if ($idSelected == $game->id_categoria){
+
+                //abro tr
+                if ($game->valoracion == 5 ){
+                    echo ('<tr class="logroHoras">');
+                }else{
+                    echo ('<tr>');
+                }
+
+                // nombre
+                echo ('<td>');
+                echo ($game->nombre);
+                echo ('</td>');
+
+                // precio
+                echo ('<td>');
+                echo ($game->precio . ' $');
+                echo ('</td>');
+
+                // categoria id
+                echo ('<td>');
+                foreach ($categories as $categorie){
+                    if ($categorie->id == $game->id_categoria){
+
+                        echo ('<a href="categories/' . $categorie->nombre .'" class="filtro"> '. $categorie->nombre .'</a>');
+                        
+                    }
+                }
+                echo ('</td>');
+
+                // descripcion
+                echo ('<td>');
+                echo ($game->descripcion) ;
+                echo ('</td>');
+
+                // valoracion
+                echo ('<td>');
+
+                //echo ($game->valoracion . "⭐");
+
+                if  ($game->valoracion == 1){
+                    echo ("⭐");
+                }else if ($game->valoracion == 2){
+                    echo ("⭐⭐");
+                }else if ($game->valoracion == 3){
+                    echo ("⭐⭐⭐");
+                }else if ($game->valoracion == 4){
+                    echo ("⭐⭐⭐⭐");
+                }else if ($game->valoracion == 5){
+                    echo ("⭐⭐⭐⭐⭐");
+                }
+
+                echo ('</td>');
+
+                echo ('<td>');
+                echo ('<a href="delete/'.  $game->id . ' ">🗑️</a>');
+                echo ('</td>');
+                echo ('</td>');
+                
+                echo ('</tr>');
+            }
+
+            echo(' </tbody>
+                </table>
+                ');
+        }
+        include_once 'templates/footer.php';
+
+    }//termina funcion
+
 }

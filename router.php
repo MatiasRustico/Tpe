@@ -43,6 +43,12 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteGame($id);
         break;
+
+        //categories/algo
+    case 'categories':
+        $controller = new GamesController();
+        $controller->showCategorieItem($params[1]);
+        break;
     default:
         echo('404 Page not found');
         break;

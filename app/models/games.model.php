@@ -1,4 +1,4 @@
-G<?php
+<?php
 
 class GamesModel { 
 

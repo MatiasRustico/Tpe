@@ -1,0 +1,67 @@
+foreach ($games as $game){
+            if ($idSelected == $game->id_categoria){
+
+
+                if ($game->valoracion == 5 ){
+                    echo ('<tr class="logroHoras">');
+                }else{
+                    echo ('<tr>');
+                }
+
+                // nombre
+                echo ('<td>');
+                echo ($game->nombre);
+                echo ('</td>');
+
+                // precio
+                echo ('<td>');
+                echo ($game->precio . ' $');
+                echo ('</td>');
+
+                // categoria id
+                echo ('<td>');
+                foreach ($categories as $categorie){
+                    if ($categorie->id == $game->id_categoria){
+                        echo ($categorie->nombre);
+                    }
+                }
+                echo ('</td>');
+
+                // descripcion
+                echo ('<td>');
+                echo ($game->descripcion);
+                echo ('</td>');
+
+                // valoracion
+                echo ('<td>');
+                if  ($game->valoracion == 1){
+                    echo ("⭐");
+                }else if ($game->valoracion == 2){
+                    echo ("⭐⭐");
+                }else if ($game->valoracion == 3){
+                    echo ("⭐⭐⭐");
+                }else if ($game->valoracion == 4){
+                    echo ("⭐⭐⭐⭐");
+                }else if ($game->valoracion == 5){
+                    echo ("⭐⭐⭐⭐⭐");
+                }
+                echo ('</td>');
+
+                echo ('<td>');
+                echo ('<a href="delete/'.  $game->id . '>🗑️</a>');
+                echo ('</td>');
+                echo ('</tr>');
+                
+            }  
+        }
+
+        echo(' </tbody>
+            </table>
+            </section>');
+        echo ('</article>');
+
+        include_once 'templates/footer.php';
+
+    }//termina funcion
+
+}

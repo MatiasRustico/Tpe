@@ -417,7 +417,13 @@ th {
 
 .formulariousuarios p {
     font-size: 16px;
-    color: rgb(160, 242, 4);
+    color: white;
+    font-weight: bold;
+}
+
+.formulariousuarios h1 {
+    font-size: 40px;
+    color: white;
     font-weight: bold;
 }
 
@@ -465,8 +471,9 @@ th {
 
 .filtro {
     width: 50%;
-    background: linear-gradient(to right, rgba(62, 0, 107, 0.931), rgb(174, 0, 197), #ff51ffd2);
-    color: black;
+    text-decoration: none;
+    background: rgba(255, 0, 255, 0.445);
+    color: rgb(0, 0, 0);
     font-weight: bold;
     font-size: 16px;
     border-radius: 5px;
@@ -668,6 +675,16 @@ footer a {
     .formulariousuarios {
         margin: 10px;
         border-radius: 0px;
+    }
+    .categorieItem {
+        display: flex;
+        background: rgba(0, 0, 0, 0.787);
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .categorieItem a {
+        padding: 5px;
+        margin: 10px 5px;
     }
     /*--------------------------------------------------------FOOTER-----------------------------------------------------------*/
     .footer a {
