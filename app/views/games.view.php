@@ -45,6 +45,10 @@ class GamesView {
         echo ($ms);
     }
 
+
+
+
+
     //Pasar por parametro $categories y $games
     function showCategorie($categories, $games, $CategorieSelected){
         
@@ -59,5 +63,9 @@ class GamesView {
         $smarty->display('templates/showCategorie.tpl');
 
     }
+
+    
+
+
 
 }
