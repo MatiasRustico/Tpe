@@ -3,7 +3,7 @@ include_once "app/views/games.view.php";
 include_once "app/models/games.model.php";
 include_once "app/models/categories.model.php";
 
-class staticController {
+class StaticController {
     
     private $modelGames;
     private $view;

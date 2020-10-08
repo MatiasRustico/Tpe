@@ -7,7 +7,10 @@ class AuthView {
         $smarty = New Smarty();
 
         $smarty->display('templates/showLogIn.tpl');
+  
+    }
 
-             
+    function showError($ms){
+        echo ($ms);
     }
 }

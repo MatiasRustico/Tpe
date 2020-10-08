@@ -21,11 +21,11 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home':
-        $controller = new staticController();
+        $controller = new StaticController();
         $controller->showHome();
         break;
     case 'market':
-        $controller = new staticController();
+        $controller = new StaticController();
         $controller->showMarket();
         break;
     case 'games':
@@ -36,9 +36,14 @@ switch ($params[0]) {
 
 
     case 'login':
-        $controller = new authController();
+        $controller = new AuthController();
         $controller->showLogIn();
         break;
+    case 'verify':
+        $controller = new AuthController();
+        $controller->verifyUser();
+        break;
+
 
 
         

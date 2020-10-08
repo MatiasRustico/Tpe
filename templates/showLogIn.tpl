@@ -4,14 +4,15 @@
             <!--imagen / logo-->
             <img src="img/logo.png" alt="logo">
         </figure>
+        
         <section>
-            <form class="formulariologin" id="formulariologin" method="post">
+            <form class="formulariologin" id="formulariologin" method="post" action="verify">
                 <!--Nombre-->
-                <label for="nombredeusuario">Nombre de usuario:</label>
-                <input type="text" name="nombredeusuario" id="nombredeusuario" value="" placeholder="Minimo 5 caracteres" maxlength="20" required>
+                <label for="user">Nombre de usuario:</label>
+                <input type="text" name="user" id="user" value="" placeholder="Minimo 5 caracteres" maxlength="20" required>
                 <!--Contraseña-->
-                <label for="contrasena">Contraseña:</label>
-                <input type="password" name="contrasena" id="contrasena" value="" placeholder="Minimo 5 caracteres" maxlength="20" required>
+                <label for="password">Contraseña:</label>
+                <input type="password" name="password" id="password" value="" placeholder="Minimo 5 caracteres" maxlength="20" required>
 
                 <!--Captcha-->
                 <!--<label for="captcha">Verificacion:</label>
