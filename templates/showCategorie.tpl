@@ -76,7 +76,7 @@
                                         {foreach from=$categories item=categorie}
                                             {if $categorie->id eq $game->id_categoria}
 
-                                                <a href="categories/{$categorie->nombre}"  class='filtro'> {$categorie->nombre} </a>
+                                                {$categorie->nombre} 
                                                 
                                             {/if}
                                         {/foreach}

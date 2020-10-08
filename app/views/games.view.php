@@ -1,6 +1,7 @@
 <?php
 
 require_once ('libs/smarty/libs/Smarty.class.php');
+
 class GamesView {
     
     function showHome() {
@@ -31,14 +32,7 @@ class GamesView {
 
     }
 
-    function showLogIn() {
 
-        $smarty = New Smarty();
-
-        $smarty->display('templates/showLogIn.tpl');
-
-             
-    }
 
 
     function showError($ms){

@@ -1,40 +1,30 @@
 <?php
 include_once "app/views/games.view.php";
 include_once "app/models/games.model.php";
+include_once "app/models/categories.model.php";
 
 
 class GamesController {
 
-    private $model;
+    private $modelGames;
     private $view;
+    private $modelCategories;
+
 
     function __construct() {
         $this->view = new GamesView ();
-        $this->model = new GamesModel ();
-    }
+        $this->modelGames = new GamesModel ();
+        $this->modelCategories = new CategoriesModel();
 
-    function showHome(){
-        $this->view->showHome();
-        
     }
-
-    function showLogIn(){
-        $this->view->showLogIn();
-        
-    }
-
-    function showMarket(){
-        $this->view->showMarket();
-        
-    }
-
+    
     function showGames(){
-        $games = $this->model->getGames(); //agarra los datos de la database
-        $categories = $this->model->getCategories(); //agarra los datos de categorias
-        $this->view->showGames($games, $categories);
-        
+        $games = $this->modelGames->getGames(); //agarra los datos de la database
+        $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
+        $this->view->showGames($games, $categories);   
     }
 
+    
     
     function insertGame(){
         $nombre = $_POST['nombre'];
@@ -48,19 +38,19 @@ class GamesController {
             die();
         }
 
-        $id = $this->model->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
+        $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
 
         header("Location: " . BASE_URL . "games"); 
     }
 
     function deleteGame($id){
-        $this->model->removeGame($id);
-        header("Location: " . BASE_URL . "games"); 
+        $this->modelGames->removeGame($id);
+        header("Location: " . BASE_URL . "games/" ); 
     }
 
     function showCategorieItem($CategorieSelected){
-        $games = $this->model->getGames();
-        $categories = $this->model->getCategories();
+        $games = $this->modelGames->getGames();
+        $categories = $this->modelCategories->getCategories();
         $this->view->showCategorie($categories, $games, $CategorieSelected);
     }
 }

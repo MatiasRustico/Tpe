@@ -1,5 +1,8 @@
 <?php
+include_once "app/controller/static.controller.php";
 include_once "app/controller/games.controller.php";
+include_once "app/controller/auth.controller.php";
+
 
 // defino la base url para la construccion de links con urls semánticas
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -18,19 +21,22 @@ $params = explode('/', $action);
 switch ($params[0]) {
 
     case 'home':
-        $controller = new GamesController();
+        $controller = new staticController();
         $controller->showHome();
         break;
     case 'market':
-        $controller = new GamesController();
+        $controller = new staticController();
         $controller->showMarket();
         break;
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
         break;
+
+
+
     case 'login':
-        $controller = new GamesController();
+        $controller = new authController();
         $controller->showLogIn();
         break;
 
