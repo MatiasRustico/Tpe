@@ -43,6 +43,10 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->verifyUser();
         break;
+    case 'logout':
+        $controller = new AuthController();
+        $controller->logOut();
+        break;
 
 
 

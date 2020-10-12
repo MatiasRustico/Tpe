@@ -24,19 +24,30 @@ class AuthController {
         $password = $_POST['password'];
         
         if (empty($userForm) || empty($password)) {
-            $this->view->showError('Faltan datos obligatorios');
+            $this->view->showLogIn('Faltan datos obligatorios ⚠');
             die();
         }
 
         $user = $this->model->getByUser($userForm);
         
         if ($user && password_verify($password, $user->password)){
-            echo('buen camino tomi segui asi tk');
+
+            session_start();
+            $_SESSION['ID_USER'] = $user->id;
+            $_SESSION['USERNAME'] = $user->user;
+
+            header("Location: " . BASE_URL . "home"); 
         }else{
-            echo('mi loco dele pa fuera');
+            $this->view->showLogIn('CREDENCIALES INVALIDAS ⚠');
         }
 
     }
 
+    function logOut(){
+        session_start();
+        session_destroy();
+        header("Location: " . BASE_URL . "login"); 
+
+    }
 
 }

@@ -4,7 +4,11 @@
             <img src="img/logo.png" alt="logo">
         </figure>
         <div class="frase">
-            <h1>¡Encuentra los mejores videojuegos!</h1>
+            {if isset($smarty.session.USERNAME)}
+                <h1>Bienvenido {$smarty.session.USERNAME} | ¡Encuentra los mejores videojuegos!</h1>
+            {else}
+                <h1>¡Encuentra los mejores videojuegos!</h1>
+            {/if}
         </div>
         <figure class="imagendesplegable">
             <!--cuando apretes aca el div "desplegable" va a aparecer y desaparecer -->
@@ -24,8 +28,14 @@
             <a href="http://localhost/proyectos/tpe/games" class="jsCartelera botonSFondo">Games</a>
             </li>
             <li>
-            <a href="http://localhost/proyectos/tpe/login" class="jsCartelera botonSFondo">Log in</a>
+            
+            {if isset($smarty.session.USERNAME)} 
+                <a href="http://localhost/proyectos/tpe/logout" class="jsCartelera botonSFondo">Log out</a>
+            {else}
+                <a href="http://localhost/proyectos/tpe/login" class="jsCartelera botonSFondo">Log in</a>
+            {/if}
             </li>
+
         </ul>
     </div>
 </header>

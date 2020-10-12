@@ -15,10 +15,12 @@ class GamesController {
         $this->view = new GamesView ();
         $this->modelGames = new GamesModel ();
         $this->modelCategories = new CategoriesModel();
+        $this->checkLogged();
 
     }
     
     function showGames(){
+        
         $games = $this->modelGames->getGames(); //agarra los datos de la database
         $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
         $this->view->showGames($games, $categories);   
@@ -49,8 +51,18 @@ class GamesController {
     }
 
     function showCategorieItem($CategorieSelected){
+        
         $games = $this->modelGames->getGames();
         $categories = $this->modelCategories->getCategories();
         $this->view->showCategorie($categories, $games, $CategorieSelected);
+    }
+
+    function checkLogged(){
+        session_start();
+        if (!isset($_SESSION['ID_USER'])){
+            header("Location: " . BASE_URL . "login"); 
+            die();
+        }
+            
     }
 }

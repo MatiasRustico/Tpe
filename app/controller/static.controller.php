@@ -13,6 +13,8 @@ class StaticController {
         $this->view = new GamesView ();
         $this->modelGames = new GamesModel ();
         $this->modelCategories = new CategoriesModel();
+        session_start();
+        
     }
 
     function showMarket(){
@@ -21,11 +23,5 @@ class StaticController {
 
     function showHome(){
         $this->view->showHome();
-    }
-
-    
-    
-    
-
-    
+    } 
 }
