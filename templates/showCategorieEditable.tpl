@@ -107,7 +107,9 @@
                         
                                     </td>
                         
-                                   
+                                    <td>
+                                        <a href="delete/{$game->id}">🗑️</a>
+                                    </td>
                                     </tr>
 
                                 {/if}

@@ -29,7 +29,7 @@
        
        
 
-        {include 'templates/headerTable.tpl'}
+        {include 'templates/headerTableEdit.tpl'}
                     
         {foreach from=$games item=game}
             {if $game->valoracion eq 5 }
@@ -85,6 +85,10 @@
 
             </td>
 
+            <td>
+            <a href="delete/{$game->id}">🗑️</a>
+            </td>
+
 
             </tr>
         {/foreach}
@@ -94,6 +98,21 @@
         </section>
         
         <section>
+        
+ 
+        {include 'templates/form.up.tpl'}
+
+        <select name="categoria" class="form-control">
+        
+    
+        {foreach from=$categories item=categorie} 
+            <option value="{$categorie->id}"> {$categorie->nombre} </option>
+        {/foreach}
+        
+
+        </select>
+        
+        {include "templates/form.down.tpl"}
         
         <!--incuimos el footer-->
         {include 'footer.tpl'}

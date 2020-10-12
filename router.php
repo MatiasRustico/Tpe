@@ -1,6 +1,7 @@
 <?php
 include_once "app/controller/static.controller.php";
 include_once "app/controller/games.controller.php";
+include_once "app/controller/games.edit.controller.php";
 include_once "app/controller/auth.controller.php";
 
 
@@ -31,6 +32,10 @@ switch ($params[0]) {
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
+        break;
+    case 'gamesedit':
+        $controller = new GamesEditController();
+        $controller->showGamesEdit();
         break;
 
 

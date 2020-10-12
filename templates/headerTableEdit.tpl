@@ -15,7 +15,9 @@
                     <th>
                         Valoracion
                     </th>
-                    
+                    <th>
+                        Borrar
+                    </th>
                     
                 </thead>
                 <tbody id="ingresardatos">

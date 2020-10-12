@@ -1,10 +1,10 @@
 <?php
-include_once "app/views/games.view.php";
-include_once "app/models/games.model.php";
+include_once "app/views/games.edit.view.php";
+include_once "app/models/games.edit.model.php";
 include_once "app/models/categories.model.php";
 
 
-class GamesController {
+class GamesEditController {
 
     private $modelGames;
     private $view;
@@ -12,21 +12,14 @@ class GamesController {
 
 
     function __construct() {
-        $this->view = new GamesView ();
-        $this->modelGames = new GamesModel ();
+        $this->view = new GamesEditView ();
+        $this->modelGames = new GamesEditModel ();
         $this->modelCategories = new CategoriesModel();
-
+        $this->checkLogged();
 
     }
     
     function showGames(){
-        
-        $games = $this->modelGames->getGames(); //agarra los datos de la database
-        $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
-        $this->view->showGames($games, $categories);   
-    }
-
-    function showGamesEdit(){
         
         $games = $this->modelGames->getGames(); //agarra los datos de la database
         $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
@@ -64,5 +57,12 @@ class GamesController {
         $this->view->showCategorie($categories, $games, $CategorieSelected);
     }
 
-    
+    function checkLogged(){
+        session_start();
+        if (!isset($_SESSION['ID_USER'])){
+            header("Location: " . BASE_URL . "login"); 
+            die();
+        }
+            
+    }
 }

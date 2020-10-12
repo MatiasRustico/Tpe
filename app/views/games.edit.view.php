@@ -2,7 +2,7 @@
 
 require_once ('libs/smarty/libs/Smarty.class.php');
 
-class GamesView {
+class GamesEditView {
     
     function showHome() {
 
@@ -32,18 +32,6 @@ class GamesView {
 
     }
 
-    function showGamesEdit($games, $categories) {
-
-        $smarty = New Smarty();
-
-        $smarty->assign('games', $games);
-
-        $smarty->assign('categories', $categories);
-
-        $smarty->display('templates/showGames.tpl');
-
-    }
-
 
 
 
@@ -56,7 +44,7 @@ class GamesView {
 
 
     //Pasar por parametro $categories y $games
-    function showCategorie($categories, $games, $CategorieSelected){
+    function showCategorieEditable($categories, $games, $CategorieSelected){
         
         $smarty = New Smarty();
 
@@ -66,7 +54,7 @@ class GamesView {
 
         $smarty->assign('CategorieSelected', $CategorieSelected);
 
-        $smarty->display('templates/showCategorie.tpl');
+        $smarty->display('templates/showCategorieEditable.tpl');
 
     }
 
