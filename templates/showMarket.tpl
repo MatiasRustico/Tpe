@@ -5,7 +5,7 @@
     <base href="{BASE_URL}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tpe</title>
+    <title>Market</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/icon.png" type="icon" />
 </head>

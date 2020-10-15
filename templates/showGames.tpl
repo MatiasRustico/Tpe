@@ -5,7 +5,7 @@
     <base href="{BASE_URL}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tpe</title>
+    <title>Games</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/icon.png" type="icon" />
 </head>
@@ -63,7 +63,25 @@
 
             <!--// descripcion-->
             <td>
-            {$game->descripcion}
+            
+
+            {if $game->descripcion|count_characters gt 90}
+                {$game->descripcion|truncate:90}  
+                
+                {foreach from=$categories item=categorie}
+                    {if $categorie->id eq $game->id_categoria}
+
+                        <a href="categories/{$categorie->nombre}"> ver mas </a>
+                        
+                    {/if}
+                {/foreach}
+
+            {else}
+                {$game->descripcion}
+            {/if}
+
+            
+            <!--{$game->descripcion}-->
             </td>
 
             <!--// valoracion-->

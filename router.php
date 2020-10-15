@@ -59,11 +59,11 @@ switch ($params[0]) {
         $controller->showGames();
         break;
     case 'insert': //se va a ejecutar cuando le des ok al formulario
-        $controller = new GamesController();
+        $controller = new GamesEditController();
         $controller->insertGame();
         break;
     case 'delete':
-        $controller = new GamesController();
+        $controller = new GamesEditController();
         $id = $params[1];
         $controller->deleteGame($id);
         break;

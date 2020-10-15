@@ -50,10 +50,16 @@ class GamesEditController {
         header("Location: " . BASE_URL . "gamesedit"); 
     }
 
+
+
+
     function deleteGame($id){
         $this->modelGames->removeGame($id);
-        header("Location: " . BASE_URL . "games/" ); 
+        header("Location: " . BASE_URL . "gamesedit/" ); 
     }
+
+
+    
 
     function showCategorieItem($CategorieSelected){
         
