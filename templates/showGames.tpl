@@ -104,9 +104,11 @@
             </td>
 
         {if isset($smarty.session.USERNAME)}
+            
             <td>
             <a href="delete/{$game->id}">🗑️</a>
             </td>
+            
         {/if}
             </tr>
         {/foreach}
@@ -119,20 +121,33 @@
 
         {if isset($smarty.session.USERNAME)}
             {include 'templates/form.up.tpl'}
-
             <select name="categoria" class="form-control">
-            
-        
-            {foreach from=$categories item=categorie} 
-                <option value="{$categorie->id}"> {$categorie->nombre} </option>
-            {/foreach}
-            
-
+                        {foreach from=$categories item=categorie} 
+                            <option value="{$categorie->id}"> {$categorie->nombre} </option>
+                        {/foreach}
             </select>
-            
             {include "templates/form.down.tpl"}
 
+
+
+
+
+
+
+            {include "templates/formGamesEdit.up.tpl"}
+            <select name="categoria" class="form-control">
+                        {foreach from=$categories item=categorie} 
+                            <option value="{$categorie->id}"> {$categorie->nombre} </option>
+                        {/foreach}
+            </select>
+            {include "templates/formGamesEdit.down.tpl"}
+
+
             {include "templates/formCategorie.tpl"}
+
+            {include "templates/formCategorieEdit.tpl"}
+
+
         {/if}
         
         <!--incuimos el footer-->

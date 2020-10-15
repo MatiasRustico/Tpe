@@ -108,6 +108,7 @@
                                     </td>
                         
                                     {if isset($smarty.session.USERNAME)}
+                                        
                                         <td>
                                         <a href="delete/{$game->id}">🗑️</a>
                                         </td>

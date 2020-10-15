@@ -16,7 +16,7 @@ class CategoriesController {
 
     }
 
-    
+
     function insertCategorie(){
         $categorie = $_POST['categorie'];
         $descripcion = $_POST['descripcion'];
@@ -37,5 +37,22 @@ class CategoriesController {
     function deleteCategorie($id){
         $this->modelCategories->removeCategorie($id);
         header("Location: " . BASE_URL . "games/" ); 
+    }
+
+    function editCategorie(){
+        
+        $id = $_POST['categorie_id'];
+        $nombre = $_POST['nombre'];
+        $descripcion = $_POST['descripcion'];
+        
+        if (empty($nombre)) {
+            $this->view->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        $this->modelCategories->editCategorie($id, $nombre, $descripcion);
+
+        header("Location: " . BASE_URL . "games/" ); 
+
     }
 }

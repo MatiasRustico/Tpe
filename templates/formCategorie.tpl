@@ -1,7 +1,8 @@
 <form id="formulariousuarios" class="formulariousuarios" method="POST" action="insertcategorie">
 
-    <h1> Categorie </h1>
-    <label for="categorie">Categoria</label>
+    <h1> Añadir Categoria </h1>
+
+    <label for="categorie">nombre</label>
     <input id="categorie" name="categorie" type="text" placeholder="Ingrese nombre da la categoria" required>
 
     <label for="descripcion">Descripcion</label>

@@ -29,9 +29,6 @@ switch ($params[0]) {
         $controller = new StaticController();
         $controller->showMarket();
         break;
-
-
-
     case 'login':
         $controller = new AuthController();
         $controller->showLogIn();
@@ -44,9 +41,6 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->logOut();
         break;
-
-
-
     case 'insertcategorie':
         $controller = new CategoriesController();
         $controller->insertCategorie();
@@ -56,7 +50,6 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteCategorie($params[1]);
         break;
-
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
@@ -70,9 +63,17 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteGame($id);
         break;
+    case 'edit':
+        $controller = new GamesController();
+        $controller->editGame($id);
+        break;
     case 'categories':
         $controller = new GamesController();
         $controller->showCategorieItem($params[1]);
+        break;
+    case 'editcategorie':
+        $controller = new CategoriesController();
+        $controller->editCategorie($id);
         break;
 
 
