@@ -29,14 +29,6 @@ switch ($params[0]) {
         $controller = new StaticController();
         $controller->showMarket();
         break;
-    case 'games':
-        $controller = new GamesController();
-        $controller->showGames();
-        break;
-    case 'gamesedit':
-        $controller = new GamesEditController();
-        $controller->showGamesEdit();
-        break;
 
 
 
@@ -55,7 +47,17 @@ switch ($params[0]) {
 
 
 
+    case 'gamesedit':
+        $controller = new GamesEditController();
+        $controller->showGamesEdit();
+        break; 
+
         
+
+    case 'games':
+        $controller = new GamesController();
+        $controller->showGames();
+        break;
     case 'insert': //se va a ejecutar cuando le des ok al formulario
         $controller = new GamesController();
         $controller->insertGame();
@@ -65,12 +67,12 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteGame($id);
         break;
-
-        //categories/algo
     case 'categories':
         $controller = new GamesController();
         $controller->showCategorieItem($params[1]);
         break;
+
+
     default:
         echo('404 Page not found');
         break;

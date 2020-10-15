@@ -47,7 +47,7 @@ class GamesEditController {
 
         $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
 
-        header("Location: " . BASE_URL . "games"); 
+        header("Location: " . BASE_URL . "gamesedit"); 
     }
 
     function deleteGame($id){
