@@ -29,4 +29,21 @@ class GamesModel {
         return $games;
     }
 
+    function addGame($nombre, $precio,  $categoria, $descripcion, $valoracion){
+        //agregar a la base de datos
+        $query = $this->db->prepare('INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion) VALUES (?,?,?,?,?)');
+        $query->execute([$nombre, $precio,  $categoria, $descripcion, $valoracion]);
+
+        return $this->db->lastInsertId();
+    }
+
+    
+
+    function removeGame($id){
+        $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
+        $query->execute([$id]);
+
+    }
+
+
 }

@@ -15,7 +15,11 @@
                     <th>
                         Valoracion
                     </th>
-                    
+                    {if isset($smarty.session.USERNAME)}
+                        <th>
+                            Borrar
+                        </th>
+                    {/if}
                     
                 </thead>
                 <tbody id="ingresardatos">

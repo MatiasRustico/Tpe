@@ -1,8 +1,8 @@
 <?php
 include_once "app/controller/static.controller.php";
 include_once "app/controller/games.controller.php";
-include_once "app/controller/games.edit.controller.php";
 include_once "app/controller/auth.controller.php";
+include_once "app/controller/categories.controller.php";
 
 
 // defino la base url para la construccion de links con urls semánticas
@@ -45,34 +45,28 @@ switch ($params[0]) {
         $controller->logOut();
         break;
 
-        
 
-    case 'gamesedit':
-        $controller = new GamesEditController();
-        $controller->showGamesEdit();
-        break; 
+
     case 'insertcategorie':
-        $controller = new GamesEditController();
+        $controller = new CategoriesController();
         $controller->insertCategorie();
         break;
     case 'deletecategorie':
-        $controller = new GamesEditController();
+        $controller = new CategoriesController();
         $id = $params[1];
         $controller->deleteCategorie($params[1]);
         break;
-
-        
 
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
         break;
     case 'insert': //se va a ejecutar cuando le des ok al formulario
-        $controller = new GamesEditController();
+        $controller = new GamesController();
         $controller->insertGame();
         break;
     case 'delete':
-        $controller = new GamesEditController();
+        $controller = new GamesController();
         $id = $params[1];
         $controller->deleteGame($id);
         break;

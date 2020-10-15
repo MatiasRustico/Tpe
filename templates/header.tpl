@@ -9,6 +9,8 @@
             {else}
                 <h1>¡Encuentra los mejores videojuegos!</h1>
             {/if}
+
+            
         </div>
         <figure class="imagendesplegable">
             <!--cuando apretes aca el div "desplegable" va a aparecer y desaparecer -->
@@ -27,13 +29,6 @@
             <li>
             <a href="http://localhost/proyectos/tpe/games" class="jsCartelera botonSFondo">Games</a>
             </li>
-            
-            {if isset($smarty.session.USERNAME)} 
-            <li>
-                <a href="http://localhost/proyectos/tpe/gamesedit" class="jsCartelera botonSFondo">EditGames</a>
-            </li>
-            {/if}
-
             <li>
             {if isset($smarty.session.USERNAME)} 
                 <a href="http://localhost/proyectos/tpe/logout" class="jsCartelera botonSFondo">Log out</a>
