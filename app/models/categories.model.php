@@ -12,6 +12,7 @@ class CategoriesModel {
     private function connect(){
         //abro conexion
         $db = new PDO('mysql:host=localhost;'.'dbname=db_juegos;charset=utf8', 'root', '');
+        
         return $db;
     }
 
@@ -23,5 +24,18 @@ class CategoriesModel {
         $categories = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de categorias
 
         return $categories;
+    }
+
+    function addCategorie($categorie, $descripcion){
+        //agregar a la base de datos
+        $query = $this->db->prepare('INSERT INTO categoria (nombre, descripcion) VALUES (?,?)');
+        $query->execute([$categorie, $descripcion]);
+
+        return $this->db->lastInsertId();
+    }
+
+    function removeCategorie($id){
+        $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
+        $query->execute([$id]);
     }
 }

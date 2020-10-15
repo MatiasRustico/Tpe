@@ -45,12 +45,21 @@ switch ($params[0]) {
         $controller->logOut();
         break;
 
-
+        
 
     case 'gamesedit':
         $controller = new GamesEditController();
         $controller->showGamesEdit();
         break; 
+    case 'insertcategorie':
+        $controller = new GamesEditController();
+        $controller->insertCategorie();
+        break;
+    case 'deletecategorie':
+        $controller = new GamesEditController();
+        $id = $params[1];
+        $controller->deleteCategorie($params[1]);
+        break;
 
         
 

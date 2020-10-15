@@ -131,6 +131,8 @@
         </select>
         
         {include "templates/form.down.tpl"}
+
+        {include "templates/formCategorie.tpl"}
         
         <!--incuimos el footer-->
         {include 'footer.tpl'}

@@ -1,4 +1,5 @@
 <form id="formulariousuarios" class="formulariousuarios" method="POST" action="insert">
+    <h1> Item </h1>
     <label for="nombre">Nombre</label>
     <input id="nombre" name="nombre" type="text" placeholder="Ingrese nombre del juego" required>
 

@@ -37,6 +37,8 @@ class GamesEditModel {
         return $this->db->lastInsertId();
     }
 
+    
+
     function removeGame($id){
         $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
         $query->execute([$id]);

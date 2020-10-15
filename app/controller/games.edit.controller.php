@@ -52,6 +52,23 @@ class GamesEditController {
 
 
 
+    function insertCategorie(){
+        $categorie = $_POST['categorie'];
+        $descripcion = $_POST['descripcion'];
+        
+
+        if (empty($categorie)) {
+            $this->view->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        $id = $this->modelCategories->addCategorie($categorie, $descripcion);
+
+        header("Location: " . BASE_URL . "gamesedit"); 
+    }
+
+
+
 
     function deleteGame($id){
         $this->modelGames->removeGame($id);
@@ -66,6 +83,13 @@ class GamesEditController {
         $games = $this->modelGames->getGames();
         $categories = $this->modelCategories->getCategories();
         $this->view->showCategorie($categories, $games, $CategorieSelected);
+    }
+
+
+
+    function deleteCategorie($id){
+        $this->modelCategories->removeCategorie($id);
+        header("Location: " . BASE_URL . "gamesedit/" ); 
     }
 
 }
