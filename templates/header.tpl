@@ -27,11 +27,14 @@
             <li>
             <a href="http://localhost/proyectos/tpe/games" class="jsCartelera botonSFondo">Games</a>
             </li>
-            <li>
-            <a href="http://localhost/proyectos/tpe/gamesedit" class="jsCartelera botonSFondo">EditGames</a>
-            </li>
-            <li>
             
+            {if isset($smarty.session.USERNAME)} 
+            <li>
+                <a href="http://localhost/proyectos/tpe/gamesedit" class="jsCartelera botonSFondo">EditGames</a>
+            </li>
+            {/if}
+
+            <li>
             {if isset($smarty.session.USERNAME)} 
                 <a href="http://localhost/proyectos/tpe/logout" class="jsCartelera botonSFondo">Log out</a>
             {else}

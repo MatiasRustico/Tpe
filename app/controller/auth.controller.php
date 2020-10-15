@@ -2,16 +2,19 @@
 
 include_once "app/views/auth.view.php";
 include_once "app/models/user.model.php";
+include_once "app/helpers/auth.helper.php";
 
 class AuthController {
 
     
     private $view;
     private $model;
+    private $authHelper;
 
     function __construct() {
         $this->view = new AuthView ();
         $this->model = new UserModel ();
+        $this->authHelper = new AuthHelper();
     }
 
     function showLogIn(){
@@ -32,9 +35,9 @@ class AuthController {
         
         if ($user && password_verify($password, $user->password)){
 
-            session_start();
-            $_SESSION['ID_USER'] = $user->id;
-            $_SESSION['USERNAME'] = $user->user;
+
+            $this->authHelper->logIn($user);
+            
 
             header("Location: " . BASE_URL . "home"); 
         }else{
@@ -44,10 +47,7 @@ class AuthController {
     }
 
     function logOut(){
-        session_start();
-        session_destroy();
-        header("Location: " . BASE_URL . "login"); 
-
+        $this->authHelper->logOut();
     }
 
 }

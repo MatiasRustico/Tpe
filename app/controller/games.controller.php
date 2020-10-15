@@ -26,13 +26,7 @@ class GamesController {
         $this->view->showGames($games, $categories);   
     }
 
-    function showGamesEdit(){
-        
-        $games = $this->modelGames->getGames(); //agarra los datos de la database
-        $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
-        $this->view->showGames($games, $categories);   
-    }
-
+    
     
     
     function insertGame(){

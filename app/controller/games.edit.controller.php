@@ -2,6 +2,7 @@
 include_once "app/views/games.edit.view.php";
 include_once "app/models/games.edit.model.php";
 include_once "app/models/categories.model.php";
+include_once "app/helpers/auth.helper.php";
 
 
 class GamesEditController {
@@ -9,22 +10,26 @@ class GamesEditController {
     private $modelGames;
     private $view;
     private $modelCategories;
+    private $authHelper;
 
 
     function __construct() {
         $this->view = new GamesEditView ();
         $this->modelGames = new GamesEditModel ();
         $this->modelCategories = new CategoriesModel();
-        $this->checkLogged();
+        $this->authHelper = new AuthHelper();
+        
+        $this->authHelper->checkLogged();
 
     }
     
-    function showGames(){
+    function showGamesEdit(){
         
         $games = $this->modelGames->getGames(); //agarra los datos de la database
         $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
-        $this->view->showGames($games, $categories);   
+        $this->view->showGamesEdit($games, $categories);   
     }
+
 
     
     
@@ -57,12 +62,4 @@ class GamesEditController {
         $this->view->showCategorie($categories, $games, $CategorieSelected);
     }
 
-    function checkLogged(){
-        session_start();
-        if (!isset($_SESSION['ID_USER'])){
-            header("Location: " . BASE_URL . "login"); 
-            die();
-        }
-            
-    }
 }

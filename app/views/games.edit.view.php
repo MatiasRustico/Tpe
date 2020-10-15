@@ -20,7 +20,7 @@ class GamesEditView {
        
     }
 
-    function showGames($games, $categories) {
+    function showGamesEdit($games, $categories) {
 
         $smarty = New Smarty();
 
@@ -28,7 +28,7 @@ class GamesEditView {
 
         $smarty->assign('categories', $categories);
 
-        $smarty->display('templates/showGames.tpl');
+        $smarty->display('templates/showGamesEdit.tpl');
 
     }
 
