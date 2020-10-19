@@ -12,12 +12,14 @@ class CategoriesController {
     function __construct() {
         $this->view = new GamesView ();
         $this->modelCategories = new CategoriesModel();
+        $this->authHelper = new AuthHelper ();
         session_start();
 
     }
 
 
     function insertCategorie(){
+        $this->authHelper->checkLogged();
         $categorie = $_POST['categorie'];
         $descripcion = $_POST['descripcion'];
         
@@ -35,12 +37,13 @@ class CategoriesController {
 
 
     function deleteCategorie($id){
+        $this->authHelper->checkLogged();
         $this->modelCategories->removeCategorie($id);
         header("Location: " . BASE_URL . "games/" ); 
     }
 
     function editCategorie(){
-        
+        $this->authHelper->checkLogged();
         $id = $_POST['categorie_id'];
         $nombre = $_POST['nombre'];
         $descripcion = $_POST['descripcion'];
