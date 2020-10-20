@@ -52,9 +52,9 @@ class AdminController {
         header("Location: " . BASE_URL . "games" ); 
     }
 
-    function editGame(){
+    function editGame($id){
         $this->authHelper->checkLogged();
-        $id = $_POST['game_id'];
+
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
         $categoria = $_POST['categoria'];
@@ -68,7 +68,7 @@ class AdminController {
 
         $this->modelAdmin->editGame($id, $nombre, $precio,  $categoria, $descripcion, $valoracion);
 
-        header("Location: " . BASE_URL . "admin" ); 
+        header("Location: " . BASE_URL . "games" ); 
     }
 
     function insertCategorie(){

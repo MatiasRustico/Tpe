@@ -29,7 +29,7 @@
 
         <!--nombre de la categoria-->
         
-        <h1> {$CategorieSelected} <h1>
+        <h1 > {$CategorieSelected} <h1>
         
 
         <!--Descripcion de la categoria-->
@@ -53,16 +53,25 @@
 
                                 {if $categorie->id eq $game->id_categoria}
 
-                                    {if $game->valoracion eq 5}
-                                        <tr class="logroHoras">
+                                    {if $game->valoracion eq 5 }
+                                        <tr class="logroHoras" style="height:30px">
+                                        
                                     {else}
-                                        <tr>
+                                        <tr style="height:30px">
                                     {/if}
                         
                                     <!--// nombre-->
-                                    <td>
-                                        <a href="game/{$game->id}" class='onegame'>{$game->nombre}</a>
-                                    </td>
+                                    {if $game->valoracion eq 5 }
+                                        <td>
+                                        <a href="game/{$game->id}" style="color:black;text-decoration: underline wavy rgba(0, 0, 0, 0.5);">{$game->nombre}</a>
+                                        
+                                        </td>
+                                    {else}
+                                        <td>
+                                            <a href="game/{$game->id}" style="color:white;text-decoration: underline wavy rgba(125, 125, 125, 0.5);">{$game->nombre}</a>
+                                            
+                                        </td>
+                                    {/if}
                         
                                     <!--// precio-->
                                     <td>
@@ -96,7 +105,7 @@
                                     {foreach from=$categories item=categorie}
                                         {if $categorie->id eq $game->id_categoria}
 
-                                            <a href="game/{$game->id}" class='onegame'>Leer más...</a>
+                                            <a href="game/{$game->id}" style="color:white;text-decoration:none">Leer más...</a>
                                             
                                         {/if}
                                     {/foreach}

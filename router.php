@@ -60,8 +60,14 @@ switch ($params[0]) {
         $id = $params[1];
         $controller->deleteGame($id);
         break;
+    case 'confirmdelete':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->deleteGame($id);
+        break;
     case 'edit':
         $controller = new AdminController();
+        $id = $params[1];
         $controller->editGame($id);
         break;
     case 'categories':
@@ -85,7 +91,7 @@ switch ($params[0]) {
         $controller = new AdminController();
         $controller->showAdmin();
         break;
-
+        
 
     default:
         echo('404 Page not found');

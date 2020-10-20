@@ -53,49 +53,7 @@
     </div>
 
 
-<!----------------------------- EDITAR JUEGO ---------------------------------->
-    <div style="width:50%;height:100%">
-        <form id="formulariousuarios" class="formulariousuarios" method="POST" action="edit" style="height:100%">
-            <h1> Editar Juego </h1>
-            <label for="nombre">Selecciona el juego</label>
-            <select name="game_id" class="form-control">            
-                            
-                {foreach from=$games item=game} 
-                    <option value="{$game->id}"> {$game->nombre} </option>
-                {/foreach}
-                            
-            </select>
 
-            <label for="nombre">Nombre</label>
-            <input id="nombre" name="nombre" type="text" placeholder="Ingrese nombre del juego" required>
-
-            <label for="precio">precio</label>
-            <input id="precio" name="precio" type="text" placeholder="Ingrese precio del juego" required>
-
-            <label for="precio">Categorias</label>
-
-            <select name="categoria" class="form-control">
-                {foreach from=$categories item=categorie} 
-                    <option value="{$categorie->id}"> {$categorie->nombre} </option>
-                {/foreach}
-            </select>
-
-            <label for="descripcion">Descripcion</label>
-            <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese Descripcion del juego" required>
-
-            <label for="descripcion">Valoracion</label>
-            <select name="valoracion" class="form-control">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            
-            <button id="js-guardard" class="botoningreso">Editar</button>
-            
-        </form>
-    </div>
 </div>
 
 

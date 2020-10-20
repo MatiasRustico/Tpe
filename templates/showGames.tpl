@@ -34,6 +34,7 @@
         {foreach from=$games item=game}
             {if $game->valoracion eq 5 }
                 <tr class="logroHoras" style="height:30px">
+                
             {else}
                 <tr style="height:30px">
             {/if}
@@ -42,20 +43,20 @@
 
             {if $game->valoracion eq 5 }
                 <td>
-                <a href="game/{$game->id}" style="color:black;text-decoration: underline wavy gray;">{$game->nombre}</a>
-                <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->nombre}">
+                <a href="game/{$game->id}" style="color:black;text-decoration: underline wavy rgba(0, 0, 0, 0.5);">{$game->nombre}</a>
+                
                 </td>
             {else}
                 <td>
-                    <a href="game/{$game->id}" style="color:white;text-decoration: underline wavy gray;">{$game->nombre}</a>
-                    <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->nombre}">
+                    <a href="game/{$game->id}" style="color:white;text-decoration: underline wavy rgba(125, 125, 125, 0.5);">{$game->nombre}</a>
+                    
                 </td>
             {/if}
 
             <!--precio-->
             <td>
             {$game->precio } $
-            <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->precio }">
+           
             </td>
 
             <!--categoria id-->
@@ -77,7 +78,7 @@
 
             {if $game->descripcion|count_characters gt 90}
                 {$game->descripcion|truncate:90}  
-                <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->descripcion} ">
+                
                 {foreach from=$categories item=categorie}
                     {if $categorie->id eq $game->id_categoria}
 
@@ -117,11 +118,13 @@
         {if isset($smarty.session.USERNAME)}
             
             <td>
-            <a href="delete/{$game->id}">🗑️</a>
+                <a href="game/{$game->id}" style="text-decoration:none">✏️</a>
             </td>
+
             <td>
-            <a href="edit/{$game->id}">✔️</a>
+                <a href="delete/{$game->id}" style="text-decoration:none">🗑️</a>
             </td>
+           
             
         {/if}
             </tr>

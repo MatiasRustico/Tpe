@@ -16,12 +16,12 @@
                         Valoracion
                     </th>
                     {if isset($smarty.session.USERNAME)}
+                        <th>
+                            Editar
+                        </th>
                         
                         <th>
                             Borrar
-                        </th>
-                        <th>
-                            Editar
                         </th>
                         
 
