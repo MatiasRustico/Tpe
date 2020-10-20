@@ -61,7 +61,7 @@
                         
                                     <!--// nombre-->
                                     <td>
-                                        {$game->nombre}
+                                        <a href="game/{$game->id}" class='onegame'>{$game->nombre}</a>
                                     </td>
                         
                                     <!--// precio-->
@@ -83,9 +83,28 @@
 
                                     </td>
                         
+
                                     <!--// descripcion-->
+
+                                    
+
                                     <td>
+
+                                    {if $game->descripcion|count_characters gt 140}
+                                    {$game->descripcion|truncate:140}  
+                                    
+                                    {foreach from=$categories item=categorie}
+                                        {if $categorie->id eq $game->id_categoria}
+
+                                            <a href="game/{$game->id}" class='onegame'>Leer más...</a>
+                                            
+                                        {/if}
+                                    {/foreach}
+
+                                    {else}
                                         {$game->descripcion}
+                                    {/if}
+                                       
                                     </td>
                         
                                     <!--// valoracion-->

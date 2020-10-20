@@ -1,17 +1,25 @@
 <header>
-    <div class="principal">
+    <div class="principal" style="justify-content: space-around;">
         <figure>
             <img src="img/logo.png" alt="logo">
         </figure>
         <div class="frase">
             {if isset($smarty.session.USERNAME)}
-                <h1>Bienvenido {$smarty.session.USERNAME} | ¡Encuentra los mejores videojuegos!</h1>
+                 
+                    <h1>Bienvenido {$smarty.session.USERNAME} | ¡Encuentra los mejores videojuegos!</h1>
+                   
             {else}
                 <h1>¡Encuentra los mejores videojuegos!</h1>
             {/if}
 
             
         </div>
+        {if isset($smarty.session.USERNAME)}
+        <div>
+            <a href="admin/" style="text-decoration=none;color:pink"> Panel de administracion </a>
+        </div>
+        {/if}
+
         <figure class="imagendesplegable">
             <!--cuando apretes aca el div "desplegable" va a aparecer y desaparecer -->
             <img src="img/burger.png" alt="burger">

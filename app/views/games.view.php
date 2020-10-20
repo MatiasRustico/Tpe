@@ -4,21 +4,7 @@ require_once ('libs/smarty/libs/Smarty.class.php');
 
 class GamesView {
     
-    function showHome() {
-
-        $smarty = New Smarty();
-
-        $smarty->display('templates/showHome.tpl');
-
-    }
-
-    function showMarket() {
-
-        $smarty = New Smarty();
-
-        $smarty->display('templates/showMarket.tpl');
-       
-    }
+    
 
     function showGames($games, $categories) {
 
@@ -41,6 +27,20 @@ class GamesView {
         $smarty->assign('categories', $categories);
 
         $smarty->display('templates/showGames.tpl');
+
+    }
+
+    function showOneGame($games, $categories, $id) {
+
+        $smarty = New Smarty();
+
+        $smarty->assign('games', $games);
+
+        $smarty->assign('categories', $categories);
+
+        $smarty->assign('id', $id);
+
+        $smarty->display('templates/showOneGame.tpl');
 
     }
 

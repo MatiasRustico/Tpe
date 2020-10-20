@@ -18,44 +18,4 @@ class CategoriesController {
     }
 
 
-    function insertCategorie(){
-        $this->authHelper->checkLogged();
-        $categorie = $_POST['categorie'];
-        $descripcion = $_POST['descripcion'];
-        
-
-        if (empty($categorie)) {
-            $this->view->showError('Faltan datos obligatorios');
-            die();
-        }
-
-        $id = $this->modelCategories->addCategorie($categorie, $descripcion);
-
-        header("Location: " . BASE_URL . "games"); 
-    }
-
-
-
-    function deleteCategorie($id){
-        $this->authHelper->checkLogged();
-        $this->modelCategories->removeCategorie($id);
-        header("Location: " . BASE_URL . "games/" ); 
-    }
-
-    function editCategorie(){
-        $this->authHelper->checkLogged();
-        $id = $_POST['categorie_id'];
-        $nombre = $_POST['nombre'];
-        $descripcion = $_POST['descripcion'];
-        
-        if (empty($nombre)) {
-            $this->view->showError('Faltan datos obligatorios');
-            die();
-        }
-
-        $this->modelCategories->editCategorie($id, $nombre, $descripcion);
-
-        header("Location: " . BASE_URL . "games/" ); 
-
-    }
 }

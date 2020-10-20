@@ -9,7 +9,6 @@ class GamesModel {
        $this->db = $this->connect();
     }
 
-
     private function connect(){
         //abro conexion
         $db = new PDO('mysql:host=localhost;'.'dbname=db_juegos;charset=utf8', 'root', '');
@@ -27,32 +26,6 @@ class GamesModel {
         $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de juegos
 
         return $games;
-    }
-
-    function addGame($nombre, $precio,  $categoria, $descripcion, $valoracion){
-        //agregar a la base de datos
-        $query = $this->db->prepare('INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion) VALUES (?,?,?,?,?)');
-        
-        $query->execute([$nombre, $precio,  $categoria, $descripcion, $valoracion]);
-
-        return $this->db->lastInsertId();
-    }
-
-    function editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion){
-        //agregar a la base de datos
-        
-        $query = $this->db->prepare('UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=? WHERE id = ?');
-        $query->execute([$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $id]);
-
-     
-    }
-
-    
-
-    function removeGame($id){
-        $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
-        $query->execute([$id]);
-
     }
 
 

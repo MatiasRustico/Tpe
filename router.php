@@ -3,6 +3,7 @@ include_once "app/controller/static.controller.php";
 include_once "app/controller/games.controller.php";
 include_once "app/controller/auth.controller.php";
 include_once "app/controller/categories.controller.php";
+include_once "app/controller/admin.controller.php";
 
 
 // defino la base url para la construccion de links con urls semánticas
@@ -41,39 +42,48 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->logOut();
         break;
-    case 'insertcategorie':
-        $controller = new CategoriesController();
-        $controller->insertCategorie();
-        break;
-    case 'deletecategorie':
-        $controller = new CategoriesController();
-        $id = $params[1];
-        $controller->deleteCategorie($params[1]);
-        break;
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
         break;
-    case 'insert': //se va a ejecutar cuando le des ok al formulario
+    case 'game':
         $controller = new GamesController();
+        $id = $params[1];
+        $controller->showOneGame($id);
+        break;
+    case 'insert': //se va a ejecutar cuando le des ok al formulario
+        $controller = new AdminController();
         $controller->insertGame();
         break;
     case 'delete':
-        $controller = new GamesController();
+        $controller = new AdminController();
         $id = $params[1];
         $controller->deleteGame($id);
         break;
     case 'edit':
-        $controller = new GamesController();
+        $controller = new AdminController();
         $controller->editGame($id);
         break;
     case 'categories':
         $controller = new GamesController();
         $controller->showCategorieItem($params[1]);
         break;
+    case 'insertcategorie':
+        $controller = new AdminController();
+        $controller->insertCategorie();
+        break;
+    case 'deletecategorie':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->deleteCategorie($params[1]);
+        break;
     case 'editcategorie':
-        $controller = new CategoriesController();
+        $controller = new AdminController();
         $controller->editCategorie($id);
+        break;
+    case 'admin':
+        $controller = new AdminController();
+        $controller->showAdmin();
         break;
 
 

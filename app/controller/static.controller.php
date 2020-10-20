@@ -1,18 +1,12 @@
 <?php
-include_once "app/views/games.view.php";
-include_once "app/models/games.model.php";
-include_once "app/models/categories.model.php";
+include_once "app/views/static.view.php";
 
 class StaticController {
     
-    private $modelGames;
     private $view;
-    private $modelCategories;
 
     function __construct() {
-        $this->view = new GamesView ();
-        $this->modelGames = new GamesModel ();
-        $this->modelCategories = new CategoriesModel();
+        $this->view = new StaticView ();
         session_start();
         
     }

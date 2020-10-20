@@ -33,15 +33,22 @@
                     
         {foreach from=$games item=game}
             {if $game->valoracion eq 5 }
-                <tr class="logroHoras">
+                <tr class="logroHoras" style="height:30px">
             {else}
-                <tr>
+                <tr style="height:30px">
             {/if}
 
             <!--nombre-->
-            <td>
-            {$game->nombre}
-            </td>
+
+            {if $game->valoracion eq 5 }
+                <td>
+                <a href="game/{$game->id}" style="color:black;text-decoration: underline wavy gray;">{$game->nombre}</a>
+                </td>
+            {else}
+                <td>
+                    <a href="game/{$game->id}" style="color:white;text-decoration: underline wavy gray;">{$game->nombre}</a>
+                </td>
+            {/if}
 
             <!--precio-->
             <td>
@@ -71,7 +78,7 @@
                 {foreach from=$categories item=categorie}
                     {if $categorie->id eq $game->id_categoria}
 
-                        <a href="categories/{$categorie->nombre}"> ver mas </a>
+                        <a href="game/{$game->id}" style="color:white;text-decoration:none">Leer más...</a>
                         
                     {/if}
                 {/foreach}
@@ -118,37 +125,6 @@
         </section>
         
         <section>
-
-        {if isset($smarty.session.USERNAME)}
-            {include 'templates/form.up.tpl'}
-            <select name="categoria" class="form-control">
-                        {foreach from=$categories item=categorie} 
-                            <option value="{$categorie->id}"> {$categorie->nombre} </option>
-                        {/foreach}
-            </select>
-            {include "templates/form.down.tpl"}
-
-
-
-
-
-
-
-            {include "templates/formGamesEdit.up.tpl"}
-            <select name="categoria" class="form-control">
-                        {foreach from=$categories item=categorie} 
-                            <option value="{$categorie->id}"> {$categorie->nombre} </option>
-                        {/foreach}
-            </select>
-            {include "templates/formGamesEdit.down.tpl"}
-
-
-            {include "templates/formCategorie.tpl"}
-
-            {include "templates/formCategorieEdit.tpl"}
-
-
-        {/if}
         
         <!--incuimos el footer-->
         {include 'footer.tpl'}
