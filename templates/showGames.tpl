@@ -43,16 +43,19 @@
             {if $game->valoracion eq 5 }
                 <td>
                 <a href="game/{$game->id}" style="color:black;text-decoration: underline wavy gray;">{$game->nombre}</a>
+                <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->nombre}">
                 </td>
             {else}
                 <td>
                     <a href="game/{$game->id}" style="color:white;text-decoration: underline wavy gray;">{$game->nombre}</a>
+                    <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->nombre}">
                 </td>
             {/if}
 
             <!--precio-->
             <td>
             {$game->precio } $
+            <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->precio }">
             </td>
 
             <!--categoria id-->
@@ -74,11 +77,12 @@
 
             {if $game->descripcion|count_characters gt 90}
                 {$game->descripcion|truncate:90}  
-                
+                <input id="descripcion" name="descripcion" type="text" placeholder="Ingrese descripcion" value="{$game->descripcion} ">
                 {foreach from=$categories item=categorie}
                     {if $categorie->id eq $game->id_categoria}
 
                         <a href="game/{$game->id}" style="color:white;text-decoration:none">Leer más...</a>
+                        
                         
                     {/if}
                 {/foreach}
@@ -114,6 +118,9 @@
             
             <td>
             <a href="delete/{$game->id}">🗑️</a>
+            </td>
+            <td>
+            <a href="edit/{$game->id}">✔️</a>
             </td>
             
         {/if}

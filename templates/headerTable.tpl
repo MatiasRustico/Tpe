@@ -20,6 +20,9 @@
                         <th>
                             Borrar
                         </th>
+                        <th>
+                            Editar
+                        </th>
                         
 
                     {/if}
