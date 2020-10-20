@@ -115,11 +115,13 @@
                             
                             <h3 style="color:white"> Descripcion : 
                                 <textarea id="descripcion" name="descripcion" type="text" style="color:white;width:300px;height:80px;border: 1px dotted #000099;background-color:rgba(0, 0, 0, 0.5)"  required>{$game->descripcion}</textarea>
-                                <button id="js-guardard" class="botoningreso">Editar</button>
+                                
                                 
                             </h3>  
-
-                            <a href="delete/{$game->id}" class="botoningreso" style="text-decoration:none">Eliminar</a>
+                                <button id="js-guardard" class="botoningreso">Editar</button>
+                            <h3 style="color:white">
+                            <a href="confirmdelete/{$game->id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 105px">Eliminar</a>
+                            </h3>
                             </form>
                         
                     

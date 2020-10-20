@@ -63,7 +63,7 @@ switch ($params[0]) {
     case 'confirmdelete':
         $controller = new AdminController();
         $id = $params[1];
-        $controller->deleteGame($id);
+        $controller->confirmDeleteGame($id);
         break;
     case 'edit':
         $controller = new AdminController();
@@ -97,3 +97,11 @@ switch ($params[0]) {
         echo('404 Page not found');
         break;
 }
+
+
+
+// Boton -> /confirmdelete ($id)
+//  confirm delete con Smarty 2 botones -> aceptar -> /delete ($id) y /deletecategorie
+//
+//
+//

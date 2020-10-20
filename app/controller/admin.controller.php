@@ -111,4 +111,9 @@ class AdminController {
         header("Location: " . BASE_URL . "admin" ); 
 
     }
+
+    function confirmDeleteGame($id){
+        $this->authHelper->checkLogged();
+        $this->view->showConfirmDelete($id);    
+    }
 }
