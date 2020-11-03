@@ -21,6 +21,7 @@ class AdminController {
     }
 
     function showAdmin(){
+        //veririca
         $this->authHelper->checkLogged();
         $games = $this->modelGames->getGames(); //agarra los datos de la database
         $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
@@ -29,6 +30,7 @@ class AdminController {
     }
 
     function insertGame(){
+        //veririca
         $this->authHelper->checkLogged();
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
@@ -47,12 +49,14 @@ class AdminController {
     }
 
     function deleteGame($id){
+        //veririca
         $this->authHelper->checkLogged();
         $this->modelAdmin->removeGame($id);
         header("Location: " . BASE_URL . "games" ); 
     }
 
     function editGame($id){
+        //veririca
         $this->authHelper->checkLogged();
 
         $nombre = $_POST['nombre'];
@@ -72,6 +76,7 @@ class AdminController {
     }
 
     function insertCategorie(){
+        //veririca
         $this->authHelper->checkLogged();
         $categorie = $_POST['categorie'];
         $descripcion = $_POST['descripcion'];
@@ -90,12 +95,14 @@ class AdminController {
 
 
     function deleteCategorie($id){
+        //veririca
         $this->authHelper->checkLogged();
         $this->modelAdmin->removeCategorie($id);
         header("Location: " . BASE_URL . "admin" ); 
     }
 
     function editCategorie(){
+        //veririca
         $this->authHelper->checkLogged();
         $id = $_POST['categorie_id'];
         $nombre = $_POST['nombre'];
@@ -113,6 +120,7 @@ class AdminController {
     }
 
     function confirmDeleteGame($id){
+        //veririca
         $this->authHelper->checkLogged();
         $this->view->showConfirmDelete($id);    
     }

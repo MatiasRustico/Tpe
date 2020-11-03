@@ -28,5 +28,14 @@ class GamesModel {
         return $games;
     }
 
+    function getOneGame($id){
+        // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
+        $query = $this->db->prepare('SELECT * FROM juegos WHERE id = ?');
+        $query->execute([$id]);
+        $game = $query->fetch(PDO::FETCH_OBJ); // arreglo de juego
+    
+        return $game;
+
+    }
 
 }
