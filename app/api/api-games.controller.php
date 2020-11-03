@@ -21,7 +21,7 @@ class ApiGamesController {
 
     public function getAll($params = null){
         //verifica
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
 
         $games = $this->model->getGames();
 
@@ -35,15 +35,28 @@ class ApiGamesController {
 
     public function getOne($params = null){ //params es un array asociativo con los parametros de la ruta
         //verifica
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
 
         $id = $params[':ID']; 
         $game = $this->model->getOneGame($id);
-        if ($game)
+        if ($game){
             $this->view->response($game, 200);
-        else 
+        }
+        else{
             $this->view->response("la tarea con el id:$id no existe", 404);
+        }
         
+        
+    }
+
+    function deleteOne($params = null){
+        $id = $params[':ID'];
+        $success = $this->model->remove($id);
+        if ($success){
+            $this->view->response("la tarea con el id:$id se borro exitosamente", 200);
+        }else{
+            $this->view->response("la tarea con el id:$id no existe", 404);
+        }
         
     }
 

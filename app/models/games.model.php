@@ -38,4 +38,11 @@ class GamesModel {
 
     }
 
+    function remove($id){
+        $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');
+        $query->execute([$id]);
+
+        return $query->rowCount();
+    }
+
 }
