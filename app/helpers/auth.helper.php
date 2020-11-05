@@ -1,6 +1,7 @@
 <?php
 
 class AuthHelper {
+    
     public function __construct() {}
 
 

@@ -52,39 +52,44 @@ switch ($params[0]) {
         $controller->showOneGame($id);
         break;
     case 'insert': //se va a ejecutar cuando le des ok al formulario
-        $controller = new AdminController();
+        $controller = new GamesController();
         $controller->insertGame();
         break;
     case 'delete':
-        $controller = new AdminController();
+        $controller = new GamesController();
         $id = $params[1];
         $controller->deleteGame($id);
         break;
     case 'confirmdelete':
-        $controller = new AdminController();
+        $controller = new GamesController();
         $id = $params[1];
         $controller->confirmDeleteGame($id);
         break;
     case 'edit':
-        $controller = new AdminController();
+        $controller = new GamesController();
         $id = $params[1];
         $controller->editGame($id);
         break;
     case 'categories':
-        $controller = new GamesController();
+        $controller = new CategoriesController();
         $controller->showCategorieItem($params[1]);
         break;
     case 'insertcategorie':
-        $controller = new AdminController();
+        $controller = new CategoriesController();
         $controller->insertCategorie();
         break;
     case 'deletecategorie':
-        $controller = new AdminController();
+        $controller = new CategoriesController();
         $id = $params[1];
-        $controller->deleteCategorie($params[1]);
+        $controller->deleteCategorie($id);
+        break;
+    case 'confirmdeletecategorie':
+        $controller = new CategoriesController();
+        $id = $params[1];
+        $controller->confirmDeleteCategorie($id);
         break;
     case 'editcategorie':
-        $controller = new AdminController();
+        $controller = new CategoriesController();
         $controller->editCategorie($id);
         break;
     case 'admin':

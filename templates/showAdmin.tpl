@@ -72,10 +72,12 @@
 
             <button id="js-guardard" class="botoningreso">Agregar</button>
 
+<!----------------------------- BORRAR CATEGORIA ---------------------------------->
+
             <h2 style="color:white"> Borrar categories </h2>
             <div class="categorieItem">
                     {foreach from=$categories  item=categorie}
-                        <a href="deletecategorie/{$categorie->id}"  class='filtro'> {$categorie->nombre}🗑️</a>            
+                        <a href="confirmdeletecategorie/{$categorie->id}"  class='filtro'> {$categorie->nombre}🗑️</a>            
                     {/foreach}
             </div>
         </form>

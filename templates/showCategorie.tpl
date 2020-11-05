@@ -138,8 +138,13 @@
                                     {if isset($smarty.session.USERNAME)}
                                         
                                         <td>
-                                        <a href="delete/{$game->id}">🗑️</a>
+                                            <a href="game/{$game->id}" style="text-decoration:none">✏️</a>
                                         </td>
+
+                                        <td>
+                                            <a href="confirmdelete/{$game->id}" style="text-decoration:none">🗑️</a>
+                                        </td>
+                                        
                                     {/if}
                                     </tr>
 

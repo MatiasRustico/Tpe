@@ -25,5 +25,22 @@ class CategoriesModel {
         return $categories;
     }
 
+    function addCategorie($categorie, $descripcion){
+        //agregar a la base de datos
+        $query = $this->db->prepare('INSERT INTO categoria (nombre, descripcion) VALUES (?,?)');
+        $query->execute([$categorie, $descripcion]);
 
+        return $this->db->lastInsertId();
+    }
+
+    function editCategorie($id, $nombre, $descripcion){
+        $query = $this->db->prepare('UPDATE `categoria` SET `id`=?,`nombre`=?,`descripcion`=? WHERE id = ?');
+        $query->execute([$id, $nombre, $descripcion, $id]);
+
+    }
+    
+    function removeCategorie($id){
+        $query = $this->db->prepare('DELETE FROM categoria WHERE id = ?');
+        $query->execute([$id]);
+    }
 }

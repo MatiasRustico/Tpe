@@ -27,6 +27,16 @@ class AdminView {
 
     }
 
+    function showConfirmDeleteCategorie($id){
+    
+        $smarty = New Smarty();
+
+        $smarty->assign('id', $id);
+
+        $smarty->display('templates/confirmationDeleteCategorie.tpl');
+
+    }
+
     function showError($ms){
         echo ($ms);
     }
