@@ -39,6 +39,19 @@ class GamesController {
 
     }
 
+
+    //Construye un nombre unico de archivo y ademas lo mueva a mi carpeta de imagenes (images) 
+    function uniqueSaveName($realName, $tempName){
+
+        $filePath = "images_db/" . uniqid("", true) . "." 
+            . strtolower(pathinfo($realName, PATHINFO_EXTENSION));
+
+        move_uploaded_file($tempName, $filePath);
+        
+        return $filePath;
+    }
+
+
     function insertGame(){
         //veririca
         $this->authHelper->checkLogged();
@@ -49,8 +62,7 @@ class GamesController {
         $valoracion = $_POST['valoracion'];
         $descripcion = $_POST['descripcion'];
 
-        print_r($_FILES);
-
+       
         if (empty($nombre) || empty($precio) || empty($categoria) || empty($valoracion)) {
             $this->view->showError('Faltan datos obligatorios');
             die();
@@ -60,7 +72,7 @@ class GamesController {
             $_FILES['input_name']['type'] == "image/jpeg" || 
             $_FILES['input_name']['type'] == "image/png" ) 
         {
-            $realName = $_FILES['input_name']['tmp_name'];
+            $realName = $this->uniqueSaveName($_FILES['input_name']['name'], $_FILES['input_name']['tmp_name']);
             $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion, $realName);
         } 
         else{

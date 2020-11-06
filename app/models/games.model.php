@@ -19,8 +19,6 @@ class GamesModel {
     function getGames($parametros = null){
         //en teoria por mediante js tendriamos que modificar el order y el sort para filtrar las busquedas en la db
         
-        
-        
         if ($parametros){
             //qsl principal base
             $sql = 'SELECT * FROM juegos';
@@ -43,7 +41,7 @@ class GamesModel {
             }
         }else{
             //Enviar la consulta 
-            $query = $this->db->prepare('SELECT * FROM juegos ORDER BY valoracion DESC');
+            $query = $this->db->prepare('SELECT * FROM juegos');
             $query->execute();
             //Obtengo la respuesta con un fetchAll (porque son muchos)
             $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de juegos
