@@ -18,7 +18,7 @@
 <!----------------------------- AÑADIR JUEGO ---------------------------------->
 <div style="display:flex" >
     <div style="width:50%;height:100%">
-    <form id="formulariousuarios" class="formulariousuarios" method="POST" action="insert" style="height:100%">
+    <form id="formulariousuarios" class="formulariousuarios" method="POST" action="insert" style="height:100%" enctype="multipart/form-data">
         <h1> Añadir Juego </h1>
         <label for="nombre">Nombre</label>
         <input id="nombre" name="nombre" type="text" placeholder="Ingrese nombre del juego" required>
@@ -46,7 +46,8 @@
             <option value="4">4</option>
             <option value="5">5</option>
         </select>
-        
+        <label> Imagebn</label>
+        <input type="file" name="input_name" id="imageToUpload">
         <button id="js-guardard" class="botoningreso">Agregar</button>
         
     </form>

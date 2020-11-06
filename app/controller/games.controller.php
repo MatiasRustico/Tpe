@@ -49,13 +49,23 @@ class GamesController {
         $valoracion = $_POST['valoracion'];
         $descripcion = $_POST['descripcion'];
 
+        print_r($_FILES);
+
         if (empty($nombre) || empty($precio) || empty($categoria) || empty($valoracion)) {
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
 
-        $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
-
+        if($_FILES['input_name']['type'] == "image/jpg" || 
+            $_FILES['input_name']['type'] == "image/jpeg" || 
+            $_FILES['input_name']['type'] == "image/png" ) 
+        {
+            $realName = $_FILES['input_name']['tmp_name'];
+            $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion, $realName);
+        } 
+        else{
+            $id = $this->modelGames->addGame($nombre, $precio,  $categoria, $descripcion, $valoracion);
+        }
         header("Location: " . BASE_URL . "admin"); 
     }
 

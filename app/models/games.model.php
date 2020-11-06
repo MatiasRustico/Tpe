@@ -15,9 +15,27 @@ class GamesModel {
         return $db;
     }
 
-
     //devuelve los juegos de la base de datos
-    function getGames(){
+    function getGames($parametros = null){
+
+        if ($parametros){
+
+            $sql = 'SELECT * FROM juegos';
+
+
+            if(isset($parametros['order'])){ 
+                $sql .= ' ORDER BY '.$parametros['order'];
+
+                if(isset($parametros['sort'])){ 
+                    $sql .= ' '.$parametros['sort'];
+        
+                }
+            }
+
+            echo($sql);
+        
+            die(__FILE__); 
+        }
 
         // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
         $query = $this->db->prepare('SELECT * FROM juegos');
@@ -45,14 +63,24 @@ class GamesModel {
         return $query->rowCount();
     }
 
-    function addGame($nombre, $precio,  $categoria, $descripcion, $valoracion){
-        //agregar a la base de datos
-        $query = $this->db->prepare('INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion) VALUES (?,?,?,?,?)');
+    function addGame($nombre, $precio,  $categoria, $descripcion, $valoracion, $imagen = null){
         
-        $query->execute([$nombre, $precio,  $categoria, $descripcion, $valoracion]);
+        if($imagen){//con imagen
+            $sql = 'INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion, imagen) VALUES (?,?,?,?,?,?)';
+            $params = [$nombre, $precio,  $categoria, $descripcion, $valoracion, $imagen];
+        }else{//sin imagen
+            $sql = 'INSERT INTO juegos (nombre, precio, id_categoria, descripcion, valoracion) VALUES (?,?,?,?,?)';
+            $params = [$nombre, $precio,  $categoria, $descripcion, $valoracion];
+        }
+        
+        //agregar a la base de datos
+        $query = $this->db->prepare($sql);
+        $query->execute($params);
 
         return $this->db->lastInsertId();
     }
+
+
 
     function editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion){
         //agregar a la base de datos
@@ -63,6 +91,8 @@ class GamesModel {
      
     }
 
+
+
     function editGameAPI($id, $nombre, $precio, $categoria, $descripcion, $valoracion){
         //agregar a la base de datos
         
@@ -71,6 +101,8 @@ class GamesModel {
 
         return $result;
     }
+
+
 
     function removeGame($id){
         $query = $this->db->prepare('DELETE FROM juegos WHERE id = ?');

@@ -28,14 +28,27 @@ class ApiGamesController {
         //verifica
         //$this->authHelper->checkLogged();
 
-        $games = $this->model->getGames();
+        $parametros = [];
+
+        if (isset($_GET['sort'])){
+            $parametros['sort'] = $_GET['sort'];
+            
+        }
+
+        if (isset($_GET['order'])){
+            $parametros['order'] = $_GET['order'];
+            
+        }
+
+        
+
+        $games = $this->model->getGames($parametros);
 
         if ($games){
             $this->view->response($games, 200);
         }else {
             $this->view->response("la tarea con el id:$id no existe", 404);
         }
-        
     }
 
     public function getOne($params = null){ //params es un array asociativo con los parametros de la ruta
