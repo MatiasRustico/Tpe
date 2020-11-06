@@ -15,14 +15,26 @@ class CategoriesModel {
         return $db;
     }
 
-    function getCategories(){
+    function getCategorie($id = null){
         // 2. Enviar la consulta (2 sub-pasos: prepare y execute)
-        $query = $this->db->prepare('SELECT * FROM categoria');
-        $query->execute();
-        // 3. Obtengo la respuesta con un fetchAll (porque son muchos)
-        $categories = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de categorias
 
-        return $categories;
+        if($id){
+            //preparamos el pedido
+            $query = $this->db->prepare('SELECT * FROM categoria WHERE id = ?');
+            //lo ejecutamos con la id correspondiente 
+            $query->execute([$id]);
+            //busca esa id
+            $categorie = $query->fetch(PDO::FETCH_OBJ);
+        }else{
+            //preparamos para traer todo
+            $query = $this->db->prepare('SELECT * FROM categoria');
+            //ejecutamos
+            $query->execute();
+            //fetchAll para traer todos
+            $categorie = $query->fetchAll(PDO::FETCH_OBJ);
+        }
+
+        return $categorie;
     }
 
     function addCategorie($categorie, $descripcion){

@@ -30,13 +30,15 @@ class GamesView {
 
     }
 
-    function showOneGame($games, $categories, $id) {
+    function showOneGame($categories, $categorie, $game, $id) {
 
         $smarty = New Smarty();
 
-        $smarty->assign('games', $games);
-
         $smarty->assign('categories', $categories);
+
+        $smarty->assign('categorie', $categorie);
+
+        $smarty->assign('game', $game);
 
         $smarty->assign('id', $id);
 
@@ -56,15 +58,18 @@ class GamesView {
 
 
     //Pasar por parametro $categories y $games
-    function showCategorie($categories, $games, $CategorieSelected){
-        
-        $smarty = New Smarty();
+    function showCategorie($categories, $categorie, $games, $id){
+       
 
-        $smarty->assign('games', $games);
+        $smarty = New Smarty();
 
         $smarty->assign('categories', $categories);
 
-        $smarty->assign('CategorieSelected', $CategorieSelected);
+        $smarty->assign('categorie', $categorie);        
+
+        $smarty->assign('games', $games);
+
+        $smarty->assign('id', $id);
 
         $smarty->display('templates/showCategorie.tpl');
 

@@ -16,10 +16,10 @@ class GamesModel {
     }
 
     //devuelve los juegos de la base de datos
-    function getGames($parametros = null){
+    function getGames($id = null){
         //en teoria por mediante js tendriamos que modificar el order y el sort para filtrar las busquedas en la db
         
-        if ($parametros){
+        /*if ($parametros){
             //qsl principal base
             $sql = 'SELECT * FROM juegos';
 
@@ -38,16 +38,31 @@ class GamesModel {
                     $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de juegos
                     return $games;
                 }
-            }
-        }else{
-            //Enviar la consulta 
-            $query = $this->db->prepare('SELECT * FROM juegos');
-            $query->execute();
-            //Obtengo la respuesta con un fetchAll (porque son muchos)
-            $games = $query->fetchAll(PDO::FETCH_OBJ); // arreglo de juegos
+            }*/
+        //}else{
+            if($id){
 
+                //preparamos el pedido
+                $query = $this->db->prepare('SELECT * FROM juegos WHERE id_categoria = ?');
+
+                //lo ejecutamos con la id correspondiente 
+                $query->execute([$id]);
+
+                //busca esa id
+                $games = $query->fetchAll(PDO::FETCH_OBJ);
+
+            }else{
+                //preparamos para traer todo
+                $query = $this->db->prepare('SELECT * FROM juegos');
+
+                //ejecutamos
+                $query->execute();
+                
+                //fetchAll para traer todos
+                $games = $query->fetchAll(PDO::FETCH_OBJ);
+            }
             return $games;
-        } 
+        //<} 
     }
 
     function getOneGame($id){

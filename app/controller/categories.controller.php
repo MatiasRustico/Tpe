@@ -59,10 +59,14 @@ class CategoriesController {
 
     }
 
-    function showCategorieItem($CategorieSelected){
-        $games = $this->modelGames->getGames();
-        $categories = $this->modelCategories->getCategories();
-        $this->view->showCategorie($categories, $games, $CategorieSelected);
+    function showCategorieItem($id){
+        $games = $this->modelGames->getGames($id);
+
+        $categories = $this->modelCategories->getCategorie();
+
+        $categorie = $this->modelCategories->getCategorie($id);
+
+        $this->view->showCategorie($categories, $categorie, $games, $id);
     }
 
     function deleteCategorie($id){

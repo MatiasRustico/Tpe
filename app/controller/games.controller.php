@@ -26,16 +26,18 @@ class GamesController {
     function showGames(){
         
         $games = $this->modelGames->getGames(); //agarra los datos de la database
-        $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
+        $categories = $this->modelCategories->getCategorie(); //agarra los datos de categorias
         $this->view->showGames($games, $categories);   
 
     }
 
     function showOneGame($id){
 
-        $games = $this->modelGames->getGames(); //agarra los datos de la database
-        $categories = $this->modelCategories->getCategories(); //agarra los datos de categorias
-        $this->view->showOneGame($games, $categories, $id);   
+        $game = $this->modelGames->getOneGame($id); //agarra los datos de la database
+        $id_cat = $game->id_categoria; //guardamos la id de la categoria
+        $categorie = $this->modelCategories->getCategorie($id_cat); //agarra la categoria 
+        $categories = $this->modelCategories->getCategorie();
+        $this->view->showOneGame($categories, $categorie, $game, $id);   
 
     }
 

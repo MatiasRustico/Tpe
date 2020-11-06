@@ -73,7 +73,8 @@ switch ($params[0]) {
         break;
     case 'categories':
         $controller = new CategoriesController();
-        $controller->showCategorieItem($params[1]);
+        $id = $params[1];
+        $controller->showCategorieItem($id);
         break;
     case 'insertcategorie':
         $controller = new CategoriesController();
