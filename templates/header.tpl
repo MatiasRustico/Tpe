@@ -14,7 +14,8 @@
 
             
         </div>
-        {if isset($smarty.session.USERNAME)}
+
+        {if isset($smarty.session.PERMIT)}
         <div>
             <a href="admin/" style="text-decoration=none;color:pink"> Panel de administracion </a>
         </div>

@@ -18,8 +18,7 @@ class AuthController {
     }
 
     function showLogIn(){
-        $this->view->showLogIn();
-        
+        $this->view->showLogIn();  
     }
 
     function verifyUser(){
@@ -33,7 +32,7 @@ class AuthController {
 
         $user = $this->model->getByUser($userForm);
         
-        if ($user && password_verify($password, $user->password)){
+        if ($user && password_verify($password, $user->pass)){
 
 
             $this->authHelper->logIn($user);
@@ -48,6 +47,33 @@ class AuthController {
 
     function logOut(){
         $this->authHelper->logOut();
+    }
+
+
+    function showRegister(){
+        $this->view->showRegister();  
+    }
+
+    function verifyRegister(){
+        $userForm = $_POST['user'];
+        $password = $_POST['password'];
+        $email = $_POST['email'];
+        
+        if (empty($userForm) || empty($password) || empty($email)) {
+            $this->view->showRegister('Faltan datos obligatorios ⚠');
+            die();
+        }
+
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+       
+        $id = $this->model->addUser($userForm, $hash, $email);
+        
+
+        $user = $this->model->getByUser($userForm);
+        $this->authHelper->logIn($user);
+
+        header("Location: " . BASE_URL . "home"); 
+        
     }
 
 }

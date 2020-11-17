@@ -78,7 +78,7 @@
             <h2 style="color:white"> Borrar categories </h2>
             <div class="categorieItem">
                     {foreach from=$categories  item=categorie}
-                        <a href="confirmdeletecategorie/{$categorie->id}"  class='filtro'> {$categorie->nombre}🗑️</a>            
+                        <a href="deletecategorie/{$categorie->id}"  class='filtro'> {$categorie->nombre}🗑️</a>            
                     {/foreach}
             </div>
         </form>
@@ -110,7 +110,69 @@
     </div>
 </div>
 
+<!----------------------------- PERMISOS USUARIO ---------------------------------->
+    <div>
+        <table id="tabla" style="width:600px">
+            <thead>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Email
+                </th>
+                <th style="width:100px">
+                    Admin
+                </th> 
+                <th style="width:60px">
+                    Eliminar
+                </th>
+                                                 
+     
+                
+            </thead>
+            <tbody id="ingresardatos">
+            
+                {foreach $users as $user}
+                    <tr>
+                        <td>
+                            {$user->user}
+                        </td>
 
+                        <td>
+                            {$user->email}
+                        </td>
+
+                        <td>
+                            {if {$user->permisos} eq 1}
+                                <form  method="POST" action="addpermit/{$user->id}">
+                                    <div>
+                                        <input type="checkbox" name="permit" id="permit" checked>
+                                        <button id="js-guardard" class="botoningreso">Enviar</button>
+                                    </div>
+                                </form>
+                            {else}
+                                <form  method="POST" action="addpermit/{$user->id}">
+                                    <div>
+                                        <input type="checkbox" name="permit" id="permit">
+                                        <button id="js-guardard" class="botoningreso">Enviar</button>
+                                    </div>
+                                
+                                </form>
+                            {/if}
+
+                            
+                        </td>
+                        <td>
+                        <a href="deleteuser/{$user->id}" style="text-decoration:none">🗑️</a> 
+                        </td>
+                    </tr>
+                    
+                {/foreach}
+
+            </tbody>
+        </table>
+    </div>
+    
 
    
 {include 'footer.tpl'}

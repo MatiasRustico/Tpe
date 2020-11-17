@@ -101,11 +101,20 @@ class GamesModel {
 
 
 
-    function editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion){
+    function editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion, $imagen = null){
         //agregar a la base de datos
         
-        $query = $this->db->prepare('UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=? WHERE id = ?');
-        $query->execute([$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $id]);
+        if($imagen){//con imagen
+            
+            $sql = 'UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=?, `imagen`=?  WHERE id = ?';
+            $params = [$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $imagen, $id];
+        }else{//sin imagen
+            $sql = 'UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=? WHERE id = ?';
+            $params = [$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $id];
+        }
+        
+        $query = $this->db->prepare($sql);
+        $query->execute($params);
 
      
     }

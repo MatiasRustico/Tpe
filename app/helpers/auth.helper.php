@@ -7,9 +7,10 @@ class AuthHelper {
 
     function checkLogged(){
         session_start();
-        if (!isset($_SESSION['ID_USER'])){
+        if (!isset($_SESSION['PERMIT'])){
             header("Location: " . BASE_URL . "login"); 
             die();
+            
         }
             
     }
@@ -25,6 +26,10 @@ class AuthHelper {
         session_start();
             $_SESSION['ID_USER'] = $user->id;
             $_SESSION['USERNAME'] = $user->user;
+            if($user->permisos == 1){
+                $_SESSION['PERMIT'] = $user->permisos;
+            }
+            
     }
 
 }

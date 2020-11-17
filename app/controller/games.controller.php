@@ -24,9 +24,9 @@ class GamesController {
     }
     
     function showGames(){
-        
+
         $games = $this->modelGames->getGames(); //agarra los datos de la database
-        $categories = $this->modelCategories->getCategorie(); //agarra los datos de categorias
+        $categories = $this->modelCategories->getCategorie(); //agarra los datos de categorias   
         $this->view->showGames($games, $categories);   
 
     }
@@ -34,6 +34,7 @@ class GamesController {
     function showOneGame($id){
 
         $game = $this->modelGames->getOneGame($id); //agarra los datos de la database
+
         $id_cat = $game->id_categoria; //guardamos la id de la categoria
         $categorie = $this->modelCategories->getCategorie($id_cat); //agarra la categoria 
         $categories = $this->modelCategories->getCategorie();
@@ -92,23 +93,40 @@ class GamesController {
         $categoria = $_POST['categoria'];
         $valoracion = $_POST['valoracion'];
         $descripcion = $_POST['descripcion'];
-
+        
         if (empty($nombre) || empty($precio) || empty($categoria) || empty($valoracion)) {
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
 
-        $this->modelGames->editGame($id, $nombre, $precio,  $categoria, $descripcion, $valoracion);
+        
+        if($_FILES['input_name']['type'] == "image/jpg" || 
+            $_FILES['input_name']['type'] == "image/jpeg" || 
+            $_FILES['input_name']['type'] == "image/png" ) 
+            
+        {
+            $realName = $this->uniqueSaveName($_FILES['input_name']['name'], $_FILES['input_name']['tmp_name']);
+            $this->modelGames->editGame($id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $realName);
+        } 
+        else{
+            $this->modelGames->editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion);
+        }
+
+
+
+        //$this->modelGames->editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion, $imagen);
 
         header("Location: " . BASE_URL . "games" ); 
     }
 
-    function confirmDeleteGame($id){
+    function deleteGame($id){
 
-        $this->adminView->showConfirmDelete($id);    
+        $game = $this->modelGames->getOneGame($id);
+        $nameGame = $game->nombre;
+        $this->adminView->showConfirmDelete($id, $nameGame);    
     }
 
-    function deleteGame($id){
+    function confirmDeleteGame($id){
 
         //Verifica
         $this->authHelper->checkLogged();

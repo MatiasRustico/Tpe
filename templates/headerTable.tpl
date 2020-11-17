@@ -15,7 +15,7 @@
                     <th>
                         Valoracion
                     </th>
-                    {if isset($smarty.session.USERNAME)}
+                    {if isset($smarty.session.PERMIT)}
                         <th>
                             Editar
                         </th>

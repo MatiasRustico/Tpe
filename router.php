@@ -35,9 +35,17 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->showLogIn();
         break;
+    case 'register':
+        $controller = new AuthController();
+        $controller->showRegister();
+        break;
     case 'verify':
         $controller = new AuthController();
         $controller->verifyUser();
+        break;
+    case 'verifyregister':
+        $controller = new AuthController();
+        $controller->verifyRegister();
         break;
     case 'logout':
         $controller = new AuthController();
@@ -46,6 +54,11 @@ switch ($params[0]) {
     case 'games':
         $controller = new GamesController();
         $controller->showGames();
+        break;
+    case 'addpermit':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->addPermit($id);
         break;
     case 'game':
         $controller = new GamesController();
@@ -93,6 +106,16 @@ switch ($params[0]) {
     case 'editcategorie':
         $controller = new CategoriesController();
         $controller->editCategorie($id);
+        break;
+    case 'deleteuser':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->deleteUser($id);
+        break;
+    case 'confirmdeleteuser':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->confirmDeleteUser($id);
         break;
     case 'admin':
         $controller = new AdminController();

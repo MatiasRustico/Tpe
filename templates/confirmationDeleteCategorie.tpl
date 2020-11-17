@@ -15,8 +15,8 @@
         
         <div class="formulariologin" style="aling-items:center;height:100%"> 
 
-            <h2 style="color:white">¿Confirmar eliminado?<h2>
-            <a href="deletecategorie/{$id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Confirmar</a>
+            <h2 style="color:white">¿Confirmar eliminado de la categoria {$categorie}?<h2>
+            <a href="confirmdeletecategorie/{$id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Confirmar</a>
             <a href="http://localhost/proyectos/tpe/admin"  class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Cancelar</a>
 
         </div>

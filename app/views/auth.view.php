@@ -10,6 +10,14 @@ class AuthView {
   
     }
 
+    function showRegister($error = null) {
+
+        $smarty = New Smarty();
+        $smarty->assign('error', $error);
+        $smarty->display('templates/showRegister.tpl');
+  
+    }
+
     function showError($ms){
         echo ($ms);
     }

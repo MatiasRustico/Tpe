@@ -22,8 +22,8 @@
     <!--nombre de la categoria-->     
     <div class="formulariologin" style="background-image: url({$game->imagen});background-position: center;background-repeat: no-repeat;background-size:cover;width:70%;border-radius:70px">
         <!--Nombre-->
-        {if isset($smarty.session.USERNAME)}
-            <form id="formulariousuarios" method="POST" action="edit/{$game->id}">
+        {if isset($smarty.session.PERMIT)}
+            <form id="formulariousuarios" method="POST" action="edit/{$game->id}" enctype="multipart/form-data">
             <input id="nombre" name="nombre" type="text" value="{$game->nombre}" required>
             {else}  
                 <div>
@@ -31,7 +31,7 @@
                 </div>                      
             {/if}
 
-            {if isset($smarty.session.USERNAME)}
+            {if isset($smarty.session.PERMIT)}
                 <!--esta mala practica si que se puede ver-->
                 <select name="valoracion" class="form-control">
                     {if  $game->valoracion eq 1}
@@ -83,7 +83,7 @@
 
             <div class="menu" style="alig-items:center">
                 <!--Categoria-->
-                {if isset($smarty.session.USERNAME)}
+                {if isset($smarty.session.PERMIT)}
                     <h3 style="color:white;padding:5px"> Categoria :
                         <select name="categoria" style="color:white;width:150px;height:30px;border: 1px dotted #000099;background-color:rgba(0, 0, 0, 0.5)">
                             {foreach from=$categories item=categorie} 
@@ -101,7 +101,7 @@
 
 
                 <!--precio-->
-                {if isset($smarty.session.USERNAME)}
+                {if isset($smarty.session.PERMIT)}
                     
                     <h3 style="color:white;padding:5px">Precio :
                         <input id="precio" name="precio" type="text" value="{$game->precio}" required>
@@ -115,20 +115,40 @@
 
             <div>
                 <!--Descripcion de la categoria-->
-                {if isset($smarty.session.USERNAME)}
+                {if isset($smarty.session.PERMIT)}
                     <h3 style="color:white"> Descripcion : 
                         <textarea id="descripcion" name="descripcion" type="text" style="color:white;width:300px;height:80px;border: 1px dotted #000099;background-color:rgba(0, 0, 0, 0.5)"  required>{$game->descripcion}</textarea>
                     </h3>  
-                        <button id="js-guardard" class="botoningreso">Editar</button>
-                    <h3 style="color:white">
-                    <a href="confirmdelete/{$game->id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 105px">Eliminar</a>
-                    </h3>
-                    </form>
+                        
+                    
+
+
+
+                
                 {else}  
                     <div>
                         <p style="width:700px"> {$game->descripcion} </p>
                     </div>                      
                 {/if}  
+
+
+                <!--Imagen-->
+
+                {if isset($smarty.session.PERMIT)}
+                
+             
+
+                    <h3 style="color:white"> Imagen : </h3>
+                    <input type="file" name="input_name" id="imagen" name="imagen">
+
+
+                    <button  class="botoningreso">Editar</button>
+                    <h3 style="color:white">
+                    <a href="delete/{$game->id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 105px">Eliminar</a>
+                    </h3>
+                </form>
+                {/if}
+                
             </div>  
         <!--fin del if-->                   
     </div>

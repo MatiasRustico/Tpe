@@ -69,7 +69,7 @@ class CategoriesController {
         $this->view->showCategorie($categories, $categorie, $games, $id);
     }
 
-    function deleteCategorie($id){
+    function confirmDeleteCategorie($id){
         //veririca
         $this->authHelper->checkLogged();
 
@@ -77,9 +77,11 @@ class CategoriesController {
         header("Location: " . BASE_URL . "admin" ); 
     }
 
-    function confirmDeleteCategorie($id){
+    function deleteCategorie($id){
 
-        $this->adminView->showConfirmDeleteCategorie($id);    
+        $categorie = $this->modelCategories->getCategorie($id);
+        $nameCategorie = $categorie->nombre;
+        $this->adminView->showConfirmDeleteCategorie($id, $nameCategorie);    
     }
 
 }
