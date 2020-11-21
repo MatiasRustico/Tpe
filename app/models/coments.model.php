@@ -39,14 +39,19 @@ class ComentsModel {
         return $query->rowCount();
     }
 
-    function addComent($comentario, $valoracion){
+    function addComent($comentario, $valoracion, $idjuego){
         
-        if(isset($_SESSION['ID_USER'])){
+        
 
-            //$id_usuario = $_SESSION['ID_USER'];
-            $id_usuario = 1;
+        if(isset($_SESSION['ID_USER'])){
+            
+            $id_usuario = $_SESSION['ID_USER'];
+            //$id_usuario = 1;
+            //$params = explode('/');
             //$id_juego = $params[1];
-            $id_juego = 55;
+            $id_juego = $idjuego;
+
+            //echo($params[1]);
             //agregar a la base de datos
             $query = $this->db->prepare('INSERT INTO comentarios (id_usuario, id_juego, comentario, valoracion) VALUES (?,?,?,?)');
             $query->execute([$id_usuario, $id_juego, $comentario, $valoracion]);

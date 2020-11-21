@@ -22,9 +22,10 @@ async function getComents() {
         const response = await fetch('api/comentarios');
 
         const coments = await response.json();
-        console.log("lo logramos");
+
 
         renderComents(coments);
+
 
 
     } catch (e) {
@@ -36,11 +37,11 @@ async function addComent() {
 
     const coment = {
         id_usuario: 1,
-        id_juego: 50,
+        idjuego: 121,
         comentario: document.querySelector('input[name=comentario]').value,
         valoracion: document.querySelector('select[name=valoracion]').value
     }
-
+    console.log(valoracion);
     try {
 
         const response = await fetch('api/comentarios', {
@@ -74,19 +75,18 @@ function renderComents(coments) {
         //creo variable para ver la valoracion
         let valoracion = "";
 
-        if (coment.valoracion = 1) {
+        if (coment.valoracion == 1) {
             valoracion = "⭐";
-
-        } else if (coment.valoracion = 2) {
+        } else if (coment.valoracion == 2) {
             valoracion = "⭐⭐";
 
-        } else if (coment.valoracion = 3) {
+        } else if (coment.valoracion == 3) {
             valoracion = "⭐⭐⭐";
 
-        } else if (coment.valoracion = 4) {
+        } else if (coment.valoracion == 4) {
             valoracion = "⭐⭐⭐⭐";
 
-        } else if (coment.valoracion = 5) {
+        } else if (coment.valoracion == 5) {
             valoracion = "⭐⭐⭐⭐⭐";
         };
 

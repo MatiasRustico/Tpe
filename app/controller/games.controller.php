@@ -33,7 +33,7 @@ class GamesController {
 
     function showOneGame($id){
 
-  
+        
         $game = $this->modelGames->getOneGame($id); //agarra los datos de la database
 
         $id_cat = $game->id_categoria; //guardamos la id de la categoria

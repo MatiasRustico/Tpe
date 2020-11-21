@@ -34,12 +34,19 @@ class ApiComentsController {
 
     public function addComent($params = null) {
 
+        session_start();
+
         $body = $this->getData();
    
+        
+        
         $comentario  = $body->comentario;
         $valoracion    = $body->valoracion;
+        $idjuego = $body->idjuego;//js
+        
 
-        $id = $this->model->addComent($comentario, $valoracion);
+
+        $id = $this->model->addComent($comentario, $valoracion, $idjuego);
 
         if ($id > 0) {
             $coment = $this->model->get($id);

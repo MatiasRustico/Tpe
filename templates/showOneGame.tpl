@@ -27,44 +27,41 @@
             <input id="nombre" name="nombre" type="text" value="{$game->nombre}" required>
             {else}  
                 <div>
-                    <h1 style="background-color:rgba(0, 0, 0, 0.5);border-radius:10px;height:50%">🎮 {$game->nombre} 🎮<h1>
+                    <h1 style="background-color:rgba(0, 0, 0, 0.5);border-radius:10px;height:50%" value="{$game->id}" id="juego" class=".miClase">🎮 {$game->nombre} 🎮</h1>
+                    
                 </div>                      
             {/if}
 
             {if isset($smarty.session.PERMIT)}
                 <!--esta mala practica si que se puede ver-->
                 <select name="valoracion" class="form-control">
+
                     {if  $game->valoracion eq 1}
                         <option value="1" selected>⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    {else if $game->valoracion eq 2}
+                    {else}
                         <option value="1">⭐</option>
-                        <option value="2" selected>⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    {else if $game->valoracion eq 3}
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3" selected>⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    {else if ($game->valoracion eq 4)}
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4" selected>⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    {else if $game->valoracion eq 5}
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5" selected>⭐⭐⭐⭐⭐</option>
                     {/if}
+                    {if  $game->valoracion eq 2}
+                        <option value="2" selected>⭐⭐</option>
+                    {else}
+                        <option value="2">⭐⭐</option>
+                    {/if}
+                    {if  $game->valoracion eq 3}
+                        <option value="3" selected>⭐⭐⭐</option>
+                    {else}
+                        <option value="3">⭐⭐⭐</option>
+                    {/if}
+                    {if  $game->valoracion eq 4}
+                        <option value="4" selected>⭐⭐⭐⭐</option>
+                    {else}
+                        <option value="4">⭐⭐⭐⭐</option>
+                    {/if}
+                    {if  $game->valoracion eq 5}
+                        <option value="5" selected>⭐⭐⭐⭐⭐</option>
+                    {else}
+                        <option value="5">⭐⭐⭐⭐⭐</option>
+                    {/if}
+
                 </select>                        
             {else}  
                 {if  $game->valoracion eq 1}
