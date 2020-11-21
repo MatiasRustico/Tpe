@@ -47,7 +47,7 @@ class ApiGamesController {
         if ($games){
             $this->view->response($games, 200);
         }else {
-            $this->view->response("la tarea con el id:$id no existe", 404);
+            $this->view->response("el juego con el id:$id no existe", 404);
         }
     }
 
@@ -61,7 +61,7 @@ class ApiGamesController {
             $this->view->response($game, 200);
         }
         else{
-            $this->view->response("la tarea con el id:$id no existe", 404);
+            $this->view->response("el juego con el id:$id no existe", 404);
         }
         
         
@@ -74,9 +74,9 @@ class ApiGamesController {
         $id = $params[':ID'];
         $success = $this->model->remove($id);
         if ($success){
-            $this->view->response("la tarea con el id:$id se borro exitosamente", 200);
+            $this->view->response("el juego con el id:$id se borro exitosamente", 200);
         }else{
-            $this->view->response("la tarea con el id:$id no existe", 404);
+            $this->view->response("el juego con el id:$id no existe", 404);
         }
         
     }

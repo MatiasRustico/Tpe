@@ -20,7 +20,7 @@
                     <div class="caja c"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Cities Skylines</a></div>
                     <div class="caja d"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Crash</a></div>
                     <div class="caja e"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Valorant</a></div>
-                    <div class="caja f"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">God of War II</a></div>
+                    <div class="caja f"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Among Us</a></div>
                     <div class="caja g"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Terraria</a></div>
                     <div class="caja h"><a href="https://gamefabrique.com/games/crash-bandicoot-2/">Borderlands</a></div>
                 </section>

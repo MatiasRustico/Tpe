@@ -33,6 +33,7 @@ class GamesController {
 
     function showOneGame($id){
 
+  
         $game = $this->modelGames->getOneGame($id); //agarra los datos de la database
 
         $id_cat = $game->id_categoria; //guardamos la id de la categoria
@@ -136,7 +137,38 @@ class GamesController {
     }
 
 
-    
+    //A ELIMINAR
+    function addComent() {
+        $titulo = $_POST['titulo'];
+        $descripcion = $_POST['descripcion'];
+        $prioridad = $_POST['prioridad'];
+
+        // verifico campos obligatorios
+        if (empty($titulo) || empty($prioridad)) {
+            $this->view->showError('Faltan datos obligatorios');
+            die();
+        }
+
+        // inserto la tarea en la DB
+        if($_FILES['input_name']['type'] == "image/jpg" || 
+            $_FILES['input_name']['type'] == "image/jpeg" || 
+            $_FILES['input_name']['type'] == "image/png" ) 
+        {
+            $realName = $this->uniqueSaveName($_FILES['input_name']['name'], 
+                                                $_FILES['input_name']['tmp_name']);
+
+            $id = $this->model->insert($titulo, $descripcion,  $prioridad, $realName);
+        }
+        else {
+            $id = $this->model->insert($titulo, $descripcion,  $prioridad);
+        }
+
+
+        // redirigimos al listado
+        header("Location: " . BASE_URL); 
+    }
+
+
 
 
     

@@ -121,6 +121,11 @@ switch ($params[0]) {
         $controller = new AdminController();
         $controller->showAdmin();
         break;
+    case 'insertar':
+        $controller = new GamesController();
+        $controller->addComent();
+        break;
+    
         
 
     default:
