@@ -43,13 +43,14 @@ class ComentsModel {
         
         if(isset($_SESSION['ID_USER'])){
 
-            $id_usuario = $_SESSION['ID_USER'];
-            $id_juego = $params[1];
-        
+            //$id_usuario = $_SESSION['ID_USER'];
+            $id_usuario = 1;
+            //$id_juego = $params[1];
+            $id_juego = 55;
             //agregar a la base de datos
             $query = $this->db->prepare('INSERT INTO comentarios (id_usuario, id_juego, comentario, valoracion) VALUES (?,?,?,?)');
             $query->execute([$id_usuario, $id_juego, $comentario, $valoracion]);
-
+     
             return $this->db->lastInsertId();
         }
     }

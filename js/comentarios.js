@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", e => {
 async function getComents() {
 
     try {
-        
+
         const response = await fetch('api/comentarios');
 
         const coments = await response.json();
@@ -32,43 +32,66 @@ async function getComents() {
     }
 }
 
-async function addComent(){
+async function addComent() {
 
-    const coment = 
-
-    {
-    id_usuario:8,
-    id_juego: 121,
-    comentario: "Alta juegazo pa",
-    valoracion: 4
+    const coment = {
+        id_usuario: 1,
+        id_juego: 50,
+        comentario: document.querySelector('input[name=comentario]').value,
+        valoracion: document.querySelector('select[name=valoracion]').value
     }
 
-    try{
+    try {
 
-        const response = await fetch('api/comentarios' , {
+        const response = await fetch('api/comentarios', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'}, 
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(coment)
         });
 
 
 
-        //const t = await response.json();
+        const comentR = await response.json();
+        console.log(comentR);
 
-
-        //const r = response.json();
         getComents();
-    
-    } catch(e){
+
+    } catch (e) {
         console.log(e);
     }
 }
 
 function renderComents(coments) {
+    //agarro el listado del dom
     const listado = document.querySelector('#coments-list');
+
+    //lo limpio
     listado.innerHTML = '';
 
+    //imprimo
     for (let coment of coments) {
-        listado.innerHTML += `<li> ${coment.comentario} </li>`;
+
+        //creo variable para ver la valoracion
+        let valoracion = "";
+
+        if (coment.valoracion = 1) {
+            valoracion = "⭐";
+
+        } else if (coment.valoracion = 2) {
+            valoracion = "⭐⭐";
+
+        } else if (coment.valoracion = 3) {
+            valoracion = "⭐⭐⭐";
+
+        } else if (coment.valoracion = 4) {
+            valoracion = "⭐⭐⭐⭐";
+
+        } else if (coment.valoracion = 5) {
+            valoracion = "⭐⭐⭐⭐⭐";
+        };
+
+        //imprimo
+        listado.innerHTML += `<li> ${coment.comentario} ${valoracion} </li>`
+
     }
 }

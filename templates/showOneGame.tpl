@@ -156,24 +156,24 @@
 
 <div style="display:flex" >
     <div style="width:50%;height:100%">
-    <form id="formulariocomentarios" class="formulariousuarios" method="POST" style="height:100%" enctype="multipart/form-data">
-        <h2 id="ingresardatos" > Añadir Comentario </h2>
+        <form id="formulariocomentarios" class="formulariousuarios" method="POST" style="height:100%" enctype="multipart/form-data">
+            <h2 id="ingresardatos" > Añadir Comentario </h2>
 
-        <label for="comentario">Comentario</label>
-        <input style="width:300px" id="comentario" name="comentario" type="text" placeholder="Ingrese su comentario del juego">
+            <label for="comentario">Comentario</label>
+            <input style="width:300px" id="comentario" name="comentario" type="text" placeholder="Ingrese su comentario del juego">
 
-        <label for="valoracion">Valoracion</label>
-        <select name="valoracion" class="form-control">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+            <label for="valoracion">Valoracion</label>
+            <select name="valoracion" id="valoracion" class="form-control">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
-        <button type="submit" class="botoningreso">Añadir comentario</button>
-        
-    </form>
+            <button type="submit" class="botoningreso">Añadir comentario</button>
+            
+        </form>
     </div>
 
 
@@ -181,7 +181,7 @@
 </div>
 
 <div>
-    <ul id="coments-list">
+    <ul id="coments-list" class="listaComentarios">
     
     </ul>
 </div>

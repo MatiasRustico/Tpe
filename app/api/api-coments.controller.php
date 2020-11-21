@@ -35,7 +35,7 @@ class ApiComentsController {
     public function addComent($params = null) {
 
         $body = $this->getData();
-
+   
         $comentario  = $body->comentario;
         $valoracion    = $body->valoracion;
 
@@ -44,6 +44,7 @@ class ApiComentsController {
         if ($id > 0) {
             $coment = $this->model->get($id);
             $this->view->response($coment, 200);
+            
         }
         else { 
             $this->view->response("No se pudo insertar", 500);
