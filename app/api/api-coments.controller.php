@@ -19,14 +19,22 @@ class ApiComentsController {
         return json_decode($this->data);
     }
 
-    public function getAllComents(){
-     
-        $coments = $this->model->getComents();
+    //obtenemos por parametro la id del juego del cual queremos mostrar los comentaios
+    public function getComents($params = null){
+
+        //agarramos la id
+        $id = $params[':ID'];
+
+        //llamamos al modelo para buscarlos
+        $coments = $this->model->getComents($id);
         
+        //manejo el codigo respuesta
         if ($coments){
-            $this->view->response($coments, 200);
-        }else {
-            $this->view->response("el comentario con el id:$id no existe", 404);
+            if ($coments){
+                $this->view->response($coments, 200);
+            }else {
+                $this->view->response("no existen comentarios", 404);
+            }
         }
     }
 
@@ -58,6 +66,11 @@ class ApiComentsController {
         }
     }
 
+
+    function deleteComent($params){
+        $id = $params[':ID'];
+        $this->model->deleteComent($id);
+    }
 
     public function show404($params = null){
         $this->view->response("El recurso solicitado no existe", 404);    

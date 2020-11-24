@@ -2,6 +2,8 @@
 require_once 'libs/Router.php';
 require_once 'app/api/api-games.controller.php';
 require_once 'app/api/api-coments.controller.php';
+require_once 'app/api/api-users.controller.php';
+
 
 //creo router
 
@@ -9,8 +11,19 @@ $router = new Router();
 
 //armo la tabla de ruteo
 
-$router->addRoute('comentarios', 'GET', 'ApiComentsController', 'getAllComents'); 
+//buscar los comentarios de un juego en especifico
+$router->addRoute('comentarios/:ID', 'GET', 'ApiComentsController', 'getComents'); 
+//subir un comentario
 $router->addRoute('comentarios', 'POST', 'ApiComentsController', 'addComent');
+//borrar un comentario
+$router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentsController', 'deleteComent');
+
+
+
+
+//buscar los usuarios
+$router->addRoute('usuarios', 'GET', 'ApiUsersController', 'getUsers'); 
+
 
 $router->addRoute('games', 'GET', 'ApiGamesController', 'getAll'); 
 $router->addRoute('games/:ID', 'GET', 'ApiGamesController', 'getOne'); 

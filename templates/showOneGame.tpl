@@ -5,9 +5,14 @@
     <base href="{BASE_URL}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Categories</title>
+    <title>{$game->nombre}</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/icon.png" type="icon" />
+
+    <!--Vue-->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+    
 </head>
 
 
@@ -151,37 +156,39 @@
     </div>
 </div>
 
-<div style="display:flex" >
-    <div style="width:50%;height:100%">
-        <form id="formulariocomentarios" class="formulariousuarios" method="POST" style="height:100%" enctype="multipart/form-data">
-            <h2 id="ingresardatos" > Añadir Comentario </h2>
+{if isset($smarty.session.USERNAME) && !isset($smart.session.PERMIT)}
+    <div style="display:flex" >
+        <div style="width:50%;height:100%">
+            <form id="formulariocomentarios" class="formulariousuarios" method="POST" style="height:100%" enctype="multipart/form-data">
+                <h2 id="ingresardatos" > Añadir Comentario </h2>
 
-            <label for="comentario">Comentario</label>
-            <input style="width:300px" id="comentario" name="comentario" type="text" placeholder="Ingrese su comentario del juego">
+                <label for="comentario">Comentario</label>
+                <input style="width:300px" id="comentario" name="comentario" type="text" placeholder="Ingrese su comentario del juego" required>
 
-            <label for="valoracion">Valoracion</label>
-            <select name="valoracion" id="valoracion" class="form-control">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+                <label for="valoracion">Valoracion</label>
+                <select name="valoracion" id="valoracion" class="form-control">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-            <button type="submit" class="botoningreso">Añadir comentario</button>
-            
-        </form>
-    </div>
-
+                <button type="submit" class="botoningreso">Añadir comentario</button>
+                
+            </form>
+        </div>
+{/if}
 
 
 </div>
 
 <div>
-    <ul id="coments-list" class="listaComentarios">
-    
-    </ul>
+    <div id="coments-list" class="Comentarios">
+        {include file="vue/coment-list.vue"}
+    </div>
 </div>
+
 
 
 

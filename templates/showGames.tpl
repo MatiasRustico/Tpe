@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Games</title>
-    <link rel="stylesheet" href="css/style.css">
+    
     <link rel="icon" href="img/icon.png" type="icon" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 
@@ -15,10 +17,10 @@
 
         
     <article class="tablausuarios">
-        <section>
+        <section class="fondoTabla">
         
             <div class="categorieItem">
-                {foreach from=$categories  item=categorie}
+                {foreach from=$categories item=categorie}
                     <a href="categories/{$categorie->id}"  class='filtro'> {$categorie->nombre} </a>
                 
                 {/foreach}
@@ -26,15 +28,42 @@
     
     
 
-            {include 'templates/headerTable.tpl'}
-            <!--abre table-->
-                <!--abre tbody-->   
+            <table id="tabla" class="">
+                <thead>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Categoria
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Valoracion
+                    </th>
+                    {if isset($smarty.session.PERMIT)}
+                        <th>
+                            Editar
+                        </th>
+                        
+                        <th>
+                            Borrar
+                        </th>
+                     {/if}
+                    
+                </thead>
+                <tbody id="ingresardatos">
+            
                     {foreach from=$games item=game}
                         {if $game->valoracion eq 5 }
                             <tr class="logroHoras" style="height:30px">
                             
                         {else}
-                            <tr style="height:30px">
+                            <tr style="height:30px;background-color:rgba(0, 0, 0, 0)">
                         {/if}
 
                         <!--nombre-->
