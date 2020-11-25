@@ -1,8 +1,14 @@
 "use strict"
 
-
 const app = new Vue({
     el: "#app",
+    data: {
+        comentarios: [], //assing 
+    },
+});
+
+const admin = new Vue({
+    el: "#admin",
     data: {
         comentarios: [], //assing 
     },
@@ -19,11 +25,9 @@ async function deleteComent(id) {
     console.log(id);
 
 
-
     const comentarios = await fetch('api/comentarios/' + id, {
         'method': 'DELETE'
     });
-
 
     getComents();
 
@@ -103,8 +107,7 @@ async function getComents() {
         }
 
         app.comentarios = coments;
-
-
+        admin.comentarios = coments;
 
     } catch (e) {
         console.log(e);

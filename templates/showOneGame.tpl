@@ -193,7 +193,13 @@
 
 <div>
     <div id="coments-list" class="Comentarios">
-        {include file="vue/coment-list.vue"}
+    {if isset($smarty.session.PERMIT)}
+
+        {include file="vue/admin-coment-list.vue"}
+    {else}
+
+        {include file="vue/normal-coment-list.vue"}
+    {/if}
     </div>
 </div>
 
