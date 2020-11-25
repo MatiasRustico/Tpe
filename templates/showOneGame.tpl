@@ -25,7 +25,7 @@
 
 <div class="formulariousuarios">
     <!--nombre de la categoria-->     
-    <div class="formulariologin" style="background-image: url({$game->imagen});background-position: center;background-repeat: no-repeat;background-size:cover;width:70%;border-radius:70px">
+    <div id="fondoJuego" class="formulariologin" style="background-image: url({$game->imagen});background-position: center;background-repeat: no-repeat;background-size:cover;width:70%;border-radius:70px">
         <!--Nombre-->
         {if isset($smarty.session.PERMIT)}
             <form id="formulariousuarios" method="POST" action="edit/{$game->id}" enctype="multipart/form-data">
@@ -139,18 +139,26 @@
                 {if isset($smarty.session.PERMIT)}
                 
              
-
-                    <h3 style="color:white"> Imagen : </h3>
-                    <input type="file" name="input_name" id="imagen" name="imagen">
+                    <div>
+                        <h3 style="color:white"> Imagen : </h3>
+                        <input type="file" name="input_name" id="imagen" name="imagen">
+                        <!--<a href="removeimage/{$game->id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 105px">Eliminar Imagen</a>-->
+                    
+                        <div>
+                            <label class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 10px">Escriba "borrar" para confirmar eliminado de imagen</label>
+                            <input id="removeimage" name="removeimage" type="text">
+                        </div>
+                    </div>
+                    
 
 
                     <button  class="botoningreso">Editar</button>
                     <h3 style="color:white">
                     <a href="delete/{$game->id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:15px;padding:3px 105px">Eliminar</a>
                     </h3>
-                </form>
+                    
                 {/if}
-                
+                </form>
             </div>  
         <!--fin del if-->                   
     </div>

@@ -103,12 +103,18 @@ class GamesModel {
 
     function editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion, $imagen = null){
         //agregar a la base de datos
-        
-        if($imagen){//con imagen
-            
+
+        if($imagen == 'hola'){
+            $imagen = null;
             $sql = 'UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=?, `imagen`=?  WHERE id = ?';
             $params = [$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $imagen, $id];
-        }else{//sin imagen
+        }
+        else if($imagen){//con imagen
+            $sql = 'UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=?, `imagen`=?  WHERE id = ?';
+            $params = [$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $imagen, $id];
+        
+        }
+        else{//sin imagen
             $sql = 'UPDATE `juegos` SET `id`=?,`nombre`=?,`precio`=?,`id_categoria`=?,`descripcion`=?,`valoracion`=? WHERE id = ?';
             $params = [$id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $id];
         }

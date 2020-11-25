@@ -144,7 +144,7 @@
 
                         <td>
                             {if {$user->permisos} eq 1}
-                                <form  method="POST" action="addpermit/{$user->id}">
+                                <form method="POST" action="addpermit/{$user->id}">
                                     <div>
                                         <input type="checkbox" name="permit" id="permit" checked>
                                         <button id="js-guardard" class="botoningreso">Enviar</button>

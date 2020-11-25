@@ -23,6 +23,9 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
 
+    
+
+
     case 'home':
         $controller = new StaticController();
         $controller->showHome();
@@ -83,6 +86,11 @@ switch ($params[0]) {
         $controller = new GamesController();
         $id = $params[1];
         $controller->editGame($id);
+        break;
+    case 'removeimagen':
+        $controller = new GamesController();
+        $id = $params[1];
+        $controller->removeimagen($id);
         break;
     case 'categories':
         $controller = new CategoriesController();

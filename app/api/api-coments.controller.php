@@ -68,10 +68,17 @@ class ApiComentsController {
 
 
     function deleteComent($params){
+        
         $id = $params[':ID'];
-        $this->model->deleteComent($id);
+        echo($id);
+        $success = $this->model->deleteComent($id);
+        if ($success){
+            $this->view->response("el comentario con el id:$id se borro exitosamente", 200);
+        }else{
+            $this->view->response("el comentario con el id:$id no existe", 404);
+        }
     }
-
+    
     public function show404($params = null){
         $this->view->response("El recurso solicitado no existe", 404);    
     }

@@ -32,11 +32,11 @@ class ComentsModel {
     }
 
 
-    function remove($id){
+    function deleteComent($id){
         $query = $this->db->prepare('DELETE FROM comentarios WHERE id = ?');
-        $query->execute([$id]);
+        $success = $query->execute([$id]);
 
-        return $query->rowCount();
+        return $success;
     }
 
     function addComent($comentario, $valoracion, $idjuego){

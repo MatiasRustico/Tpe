@@ -11,7 +11,7 @@
 
         <span class="span"> {{coment.comentario}} </span>
 
-        <button v-on click=eliminar(coment.id)>🗑️</button>
+        <button v-on:click=eliminar(coment.id)>🗑️</button>
 
     </div>
 </section>

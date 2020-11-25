@@ -8,6 +8,7 @@ const app = new Vue({
     },
     methods: {
         eliminar: function(id) {
+
             deleteComent(id)
         }
     }
@@ -15,31 +16,43 @@ const app = new Vue({
 
 async function deleteComent(id) {
 
+    console.log(id);
+
+
 
     const comentarios = await fetch('api/comentarios/' + id, {
-        method: 'DELETE'
+        'method': 'DELETE'
     });
 
-    const coments = await comentarios.json();
 
-    getComents()
+    getComents();
 
 }
-
-
-
 
 
 document.addEventListener("DOMContentLoaded", e => {
     getComents();
 
-    document.querySelector('#formulariocomentarios').addEventListener('submit', e => {
-        e.preventDefault();
-        addComent();
-    });
+    let form = document.querySelector('#formulariocomentarios');
+    if (form != null) {
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            addComent();
+        });
+    }
+
+
+
+    //no darle importancia (web1)
+    let botondeultimolanzamiento = document.querySelector("#botondeultimolanzamiento");
+    if (botondeultimolanzamiento != null) {
+        botondeultimolanzamiento.addEventListener("click", function(event) {
+            event.preventDefault();
+        });
+    }
+
 
 });
-
 
 
 
@@ -53,8 +66,6 @@ async function getComents() {
     //agarro la id del juego que esta ultima en la URL
     let id_juego = window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1);
 
-
-    console.log(id_juego);
     try {
 
         //vamos a buscar los comentarios de ese juego en especifico

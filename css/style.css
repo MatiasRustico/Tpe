@@ -380,8 +380,12 @@ figure img {
 /*-----------------------------------------------TABLA-----------------------------------------------*/
 
 .fondoTabla {
-    background-color: rgb(0, 0, 0);
+    background-image: linear-gradient(to right, rgba(250, 0, 250, 0.8), rgba(0, 0, 0, 0), rgba(250, 0, 250, 0.8));
     color: white;
+}
+
+.dataTables_empty {
+    background-image: linear-gradient(to right, rgba(250, 0, 250, 0.8), rgb(0, 0, 0), rgba(250, 0, 250, 0.8));
 }
 
 .logroHoras {
@@ -752,5 +756,3 @@ footer a {
         display: none;
     }
 }
-
-tabla_wrapper

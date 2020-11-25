@@ -12,11 +12,11 @@ $router = new Router();
 //armo la tabla de ruteo
 
 //buscar los comentarios de un juego en especifico
-$router->addRoute('comentarios/:ID', 'GET', 'ApiComentsController', 'getComents'); 
+$router->addRoute('comentarios/:ID', 'GET', 'ApiComentsController', 'getComents'); //comentarios / id del juego
 //subir un comentario
 $router->addRoute('comentarios', 'POST', 'ApiComentsController', 'addComent');
 //borrar un comentario
-$router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentsController', 'deleteComent');
+$router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentsController', 'deleteComent');//comentarios / id del comentario
 
 
 

@@ -23,6 +23,13 @@ class GamesController {
 
     }
     
+    function removeImagen(){
+
+
+
+    }
+    
+
     function showGames(){
 
         $games = $this->modelGames->getGames(); //agarra los datos de la database
@@ -87,33 +94,36 @@ class GamesController {
 
     function editGame($id){
         //veririca
-        $this->authHelper->checkLogged();
+        //$this->authHelper->checkLogged();
 
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
         $categoria = $_POST['categoria'];
         $valoracion = $_POST['valoracion'];
         $descripcion = $_POST['descripcion'];
+        $removeimage = $_POST['removeimage'];
+
+        var_dump($removeimage);
+        echo($removeimage);
         
+
         if (empty($nombre) || empty($precio) || empty($categoria) || empty($valoracion)) {
             $this->view->showError('Faltan datos obligatorios');
             die();
         }
 
         
-        if($_FILES['input_name']['type'] == "image/jpg" || 
-            $_FILES['input_name']['type'] == "image/jpeg" || 
-            $_FILES['input_name']['type'] == "image/png" ) 
-            
-        {
+        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png" ) {
             $realName = $this->uniqueSaveName($_FILES['input_name']['name'], $_FILES['input_name']['tmp_name']);
             $this->modelGames->editGame($id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $realName);
-        } 
+        }
+        else if($removeimage == "borrar"){
+            $imagenVacia = 'hola';
+            $this->modelGames->editGame($id, $nombre, $precio,  $categoria, $descripcion, $valoracion, $imagenVacia);
+        }
         else{
             $this->modelGames->editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion);
         }
-
-
 
         //$this->modelGames->editGame($id, $nombre, $precio, $categoria, $descripcion, $valoracion, $imagen);
 
@@ -136,41 +146,5 @@ class GamesController {
         header("Location: " . BASE_URL . "games" ); 
     }
 
-
-    //A ELIMINAR
-    function addComent() {
-        $titulo = $_POST['titulo'];
-        $descripcion = $_POST['descripcion'];
-        $prioridad = $_POST['prioridad'];
-
-        // verifico campos obligatorios
-        if (empty($titulo) || empty($prioridad)) {
-            $this->view->showError('Faltan datos obligatorios');
-            die();
-        }
-
-        // inserto la tarea en la DB
-        if($_FILES['input_name']['type'] == "image/jpg" || 
-            $_FILES['input_name']['type'] == "image/jpeg" || 
-            $_FILES['input_name']['type'] == "image/png" ) 
-        {
-            $realName = $this->uniqueSaveName($_FILES['input_name']['name'], 
-                                                $_FILES['input_name']['tmp_name']);
-
-            $id = $this->model->insert($titulo, $descripcion,  $prioridad, $realName);
-        }
-        else {
-            $id = $this->model->insert($titulo, $descripcion,  $prioridad);
-        }
-
-
-        // redirigimos al listado
-        header("Location: " . BASE_URL); 
-    }
-
-
-
-
-    
 
 }

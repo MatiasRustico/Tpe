@@ -74,9 +74,9 @@ class ApiGamesController {
         $id = $params[':ID'];
         $success = $this->model->remove($id);
         if ($success){
-            $this->view->response("el juego con el id:$id se borro exitosamente", 200);
+            $this->view->response("el comentario con el id:$id se borro exitosamente", 200);
         }else{
-            $this->view->response("el juego con el id:$id no existe", 404);
+            $this->view->response("el comentario con el id:$id no existe", 404);
         }
         
     }
