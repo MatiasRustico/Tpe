@@ -17,24 +17,22 @@ $router->addRoute('comentarios/:ID', 'GET', 'ApiComentsController', 'getComents'
 $router->addRoute('comentarios', 'POST', 'ApiComentsController', 'addComent');
 //borrar un comentario
 $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentsController', 'deleteComent');//comentarios / id del comentario
-
-
-
-
 //buscar los usuarios
 $router->addRoute('usuarios', 'GET', 'ApiUsersController', 'getUsers'); 
+
+
+
+
+
+
 
 
 $router->addRoute('games', 'GET', 'ApiGamesController', 'getAll'); 
 $router->addRoute('games/:ID', 'GET', 'ApiGamesController', 'getOne'); 
 $router->addRoute('games/:ID', 'DELETE', 'ApiGamesController', 'deleteOne');
-
 $router->addRoute('games', 'POST', 'ApiGamesController', 'add'); 
-
 $router->addRoute('games/:ID', 'PUT', 'ApiGamesController', 'update');  
-
 $router->setDefaultRoute('ApiComentsController','show404');
-
 
 //rutea
 $router->route($_GET["resource"], $_SERVER['REQUEST_METHOD']);

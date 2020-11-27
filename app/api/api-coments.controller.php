@@ -1,17 +1,19 @@
 <?php
 include_once "app/models/coments.model.php";
 include_once "app/api/api.view.php";
-
+include_once "app/helpers/auth.helper.php";
 
 class ApiComentsController {
     
     private $model;
     private $view;
+    private $authHelper;
     
 
     function __construct(){
         $this->model = new ComentsModel();
         $this->view = new APIview();
+        $this->authHelper = new AuthHelper();
         $this->data = file_get_contents("php://input");
     }
 
@@ -19,7 +21,7 @@ class ApiComentsController {
         return json_decode($this->data);
     }
 
-    //obtenemos por parametro la id del juego del cual queremos mostrar los comentaios
+    //obtenemos por parametro la id del juego del cual queremos mostrar los comentarios
     public function getComents($params = null){
 
         //agarramos la id
@@ -36,36 +38,28 @@ class ApiComentsController {
                 $this->view->response("no existen comentarios", 404);
             }
         }
-    }
+    } 
 
-    
+    public function addComent() {
 
-    public function addComent($params = null) {
-
-        session_start();
+        $this->authHelper->checkLogged();
 
         $body = $this->getData();
-   
-        
         
         $comentario  = $body->comentario;
         $valoracion    = $body->valoracion;
         $idjuego = $body->idjuego;//js
         
-
-
         $id = $this->model->addComent($comentario, $valoracion, $idjuego);
 
         if ($id > 0) {
             $coment = $this->model->get($id);
             $this->view->response($coment, 200);
-            
         }
         else { 
             $this->view->response("No se pudo insertar", 500);
         }
     }
-
 
     function deleteComent($params){
         
@@ -74,7 +68,8 @@ class ApiComentsController {
         $success = $this->model->deleteComent($id);
         if ($success){
             $this->view->response("el comentario con el id:$id se borro exitosamente", 200);
-        }else{
+        }
+        else{
             $this->view->response("el comentario con el id:$id no existe", 404);
         }
     }

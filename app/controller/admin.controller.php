@@ -25,8 +25,8 @@ class AdminController {
     }
 
     function showAdmin(){
-        //veririca
-        $this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
         $games = $this->modelGames->getGames(); //agarra los datos de la database
         $categories = $this->modelCategories->getCategorie(); //agarra los datos de categorias
         $users = $this->modelUsers->getUsers(); //agarra los datos de usuarios
@@ -34,16 +34,16 @@ class AdminController {
         
     }
 
-    function confirmDeleteUser($id){//maneja la db
+    function deleteUser($id){//maneja la db
         //Verifica
-        $this->authHelper->checkLogged();
+        $this->authHelper->checkPermit();
 
         $this->modelUsers->removeUser($id);
         
         header("Location: " . BASE_URL . "admin" ); 
     }
 
-    function DeleteUser($id){//pregunta por el confirmado
+    function confirmDeleteUser($id){//pregunta por el confirmado
 
         $user = $this->modelUsers->getOneUser($id);
         $nameUser = $user->user;
@@ -51,8 +51,8 @@ class AdminController {
     }
 
     function addPermit($id){
-        //veririca
-        $this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
 
         $users = $this->modelUsers->getUsers();
         $total = 0;
@@ -66,7 +66,8 @@ class AdminController {
 
         if ($permit == "on"){
             $this->modelUsers->userPermits($id, 1); 
-        }else{
+        }
+        else{
             if($total > 1){
                 $this->modelUsers->userPermits($id, 0); 
             }
@@ -77,7 +78,6 @@ class AdminController {
         header("Location: " . BASE_URL . "admin"); 
 
     }
-    
-    
    
+
 }

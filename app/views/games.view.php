@@ -14,7 +14,7 @@ class GamesView {
 
         $smarty->assign('categories', $categories);
 
-        $smarty->display('templates/showGames.tpl');
+        $smarty->display('templates/show/showGames.tpl');
 
     }
 
@@ -26,7 +26,7 @@ class GamesView {
 
         $smarty->assign('categories', $categories);
 
-        $smarty->display('templates/showGames.tpl');
+        $smarty->display('templates/show/showGames.tpl');
 
     }
 
@@ -42,7 +42,7 @@ class GamesView {
 
         $smarty->assign('id', $id);
 
-        $smarty->display('templates/showOneGame.tpl');
+        $smarty->display('templates/show/showOneGame.tpl');
 
     }
 
@@ -71,7 +71,7 @@ class GamesView {
 
         $smarty->assign('id', $id);
 
-        $smarty->display('templates/showCategorie.tpl');
+        $smarty->display('templates/show/showCategorie.tpl');
 
     }
 

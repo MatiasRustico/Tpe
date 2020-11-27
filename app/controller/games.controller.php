@@ -21,14 +21,7 @@ class GamesController {
         $this->adminView = new AdminView ();
         session_start();
 
-    }
-    
-    function removeImagen(){
-
-
-
-    }
-    
+    }    
 
     function showGames(){
 
@@ -40,7 +33,6 @@ class GamesController {
 
     function showOneGame($id){
 
-        
         $game = $this->modelGames->getOneGame($id); //agarra los datos de la database
 
         $id_cat = $game->id_categoria; //guardamos la id de la categoria
@@ -64,8 +56,8 @@ class GamesController {
 
 
     function insertGame(){
-        //veririca
-        $this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
 
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
@@ -93,8 +85,8 @@ class GamesController {
     }
 
     function editGame($id){
-        //veririca
-        //$this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
 
         $nombre = $_POST['nombre'];
         $precio = $_POST['precio'];
@@ -130,17 +122,17 @@ class GamesController {
         header("Location: " . BASE_URL . "games" ); 
     }
 
-    function deleteGame($id){
+    function confirmDeleteGame($id){
 
         $game = $this->modelGames->getOneGame($id);
         $nameGame = $game->nombre;
         $this->adminView->showConfirmDelete($id, $nameGame);    
     }
 
-    function confirmDeleteGame($id){
+    function deleteGame($id){
 
         //Verifica
-        $this->authHelper->checkLogged();
+        $this->authHelper->checkPermit();
 
         $this->modelGames->removeGame($id);
         header("Location: " . BASE_URL . "games" ); 

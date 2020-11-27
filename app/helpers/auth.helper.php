@@ -5,9 +5,19 @@ class AuthHelper {
     public function __construct() {}
 
 
-    function checkLogged(){
+    function checkPermit(){
         session_start();
         if (!isset($_SESSION['PERMIT'])){
+            header("Location: " . BASE_URL . "login"); 
+            die();
+            
+        }
+            
+    }
+
+    function checkLogged(){
+        session_start();
+        if (!isset($_SESSION['USERNAME'])){
             header("Location: " . BASE_URL . "login"); 
             die();
             

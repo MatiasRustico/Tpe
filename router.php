@@ -1,9 +1,9 @@
 <?php
-include_once "app/controller/static.controller.php";
-include_once "app/controller/games.controller.php";
 include_once "app/controller/auth.controller.php";
-include_once "app/controller/categories.controller.php";
+include_once "app/controller/games.controller.php";
 include_once "app/controller/admin.controller.php";
+include_once "app/controller/static.controller.php";
+include_once "app/controller/categories.controller.php";
 
 
 
@@ -23,9 +23,16 @@ $params = explode('/', $action);
 // determina que camino seguir según la acción
 switch ($params[0]) {
 
-    
+        /* "Show" Cases */
 
-
+    case 'login':
+        $controller = new AuthController();
+        $controller->showLogIn();
+        break;
+    case 'register':
+        $controller = new AuthController();
+        $controller->showRegister();
+        break;
     case 'home':
         $controller = new StaticController();
         $controller->showHome();
@@ -34,13 +41,30 @@ switch ($params[0]) {
         $controller = new StaticController();
         $controller->showMarket();
         break;
-    case 'login':
-        $controller = new AuthController();
-        $controller->showLogIn();
+    case 'categories':
+        $controller = new CategoriesController();
+        $id = $params[1];
+        $controller->showCategorieItem($id);
         break;
-    case 'register':
+    case 'games':
+        $controller = new GamesController();
+        $controller->showGames();
+        break;
+    case 'game':
+        $controller = new GamesController();
+        $id = $params[1];
+        $controller->showOneGame($id);
+        break;
+    case 'admin':
+        $controller = new AdminController();
+        $controller->showAdmin();
+        break;
+    
+        /* "Acción" Cases */
+
+    case 'logout':
         $controller = new AuthController();
-        $controller->showRegister();
+        $controller->logOut();
         break;
     case 'verify':
         $controller = new AuthController();
@@ -50,101 +74,74 @@ switch ($params[0]) {
         $controller = new AuthController();
         $controller->verifyRegister();
         break;
-    case 'logout':
-        $controller = new AuthController();
-        $controller->logOut();
-        break;
-    case 'games':
-        $controller = new GamesController();
-        $controller->showGames();
-        break;
-    case 'addpermit':
-        $controller = new AdminController();
-        $id = $params[1];
-        $controller->addPermit($id);
-        break;
-    case 'game':
-        $controller = new GamesController();
-        $id = $params[1];
-        $controller->showOneGame($id);
-        break;
-    case 'insert': //se va a ejecutar cuando le des ok al formulario
+    
+        /* "Edit" Cases */
+
+    case 'insert':
         $controller = new GamesController();
         $controller->insertGame();
-        break;
-    case 'delete':
-        $controller = new GamesController();
-        $id = $params[1];
-        $controller->deleteGame($id);
-        break;
-    case 'confirmdelete':
-        $controller = new GamesController();
-        $id = $params[1];
-        $controller->confirmDeleteGame($id);
         break;
     case 'edit':
         $controller = new GamesController();
         $id = $params[1];
         $controller->editGame($id);
         break;
-    case 'removeimagen':
-        $controller = new GamesController();
-        $id = $params[1];
-        $controller->removeimagen($id);
-        break;
-    case 'categories':
-        $controller = new CategoriesController();
-        $id = $params[1];
-        $controller->showCategorieItem($id);
-        break;
     case 'insertcategorie':
         $controller = new CategoriesController();
         $controller->insertCategorie();
         break;
-    case 'deletecategorie':
+    case 'editcategorie':
         $controller = new CategoriesController();
+        $controller->editCategorie($id);
+        break;
+    case 'removeimagen':
+        $controller = new GamesController();
         $id = $params[1];
-        $controller->deleteCategorie($id);
+        $controller->removeimagen($id);
+        break;    
+    case 'addpermit':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->addPermit($id);
+        break;
+
+        /* "Delete" Cases */   
+
+    case 'confirmdeletegame':
+        $controller = new GamesController();
+        $id = $params[1];
+        $controller->confirmDeleteGame($id);
+        break;  
+    case 'deletegame':
+        $controller = new GamesController();
+        $id = $params[1];
+        $controller->deleteGame($id);
         break;
     case 'confirmdeletecategorie':
         $controller = new CategoriesController();
         $id = $params[1];
         $controller->confirmDeleteCategorie($id);
         break;
-    case 'editcategorie':
+    case 'deletecategorie':
         $controller = new CategoriesController();
-        $controller->editCategorie($id);
+        $id = $params[1];
+        $controller->deleteCategorie($id);
+        break;  
+    case 'confirmdeleteuser':
+        $controller = new AdminController();
+        $id = $params[1];
+        $controller->confirmDeleteUser($id);
         break;
     case 'deleteuser':
         $controller = new AdminController();
         $id = $params[1];
         $controller->deleteUser($id);
         break;
-    case 'confirmdeleteuser':
-        $controller = new AdminController();
-        $id = $params[1];
-        $controller->confirmDeleteUser($id);
-        break;
-    case 'admin':
-        $controller = new AdminController();
-        $controller->showAdmin();
-        break;
-    case 'insertar':
-        $controller = new GamesController();
-        $controller->addComent();
-        break;
-    
-        
+
+        /* ... */
+
 
     default:
         echo('404 Page not found');
         break;
 }
-
-
-
-// Boton -> /confirmdelete ($id)
-//  confirm delete con Smarty 2 botones -> aceptar -> /delete ($id) y /deletecategorie
-//
-//
-//

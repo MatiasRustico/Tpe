@@ -141,7 +141,7 @@
                             </td>
 
                             <td>
-                                <a href="delete/{$game->id}" style="text-decoration:none">🗑️</a>
+                                <a href="confirmdeletegame/{$game->id}" style="text-decoration:none">🗑️</a>
                             </td>
                         {/if}
                         </tr>

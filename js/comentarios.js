@@ -22,8 +22,6 @@ const admin = new Vue({
 
 async function deleteComent(id) {
 
-    console.log(id);
-
 
     const comentarios = await fetch('api/comentarios/' + id, {
         'method': 'DELETE'
@@ -58,13 +56,6 @@ document.addEventListener("DOMContentLoaded", e => {
 
 });
 
-
-
-
-
-
-
-
 async function getComents() {
 
     //agarro la id del juego que esta ultima en la URL
@@ -72,13 +63,16 @@ async function getComents() {
 
     try {
 
+
         //vamos a buscar los comentarios de ese juego en especifico
         const comentarios = await fetch('api/comentarios/' + id_juego);
+
         const coments = await comentarios.json();
 
         //vamos a buscar los usuarios
         const usuarios = await fetch('api/usuarios');
         const users = await usuarios.json();
+
 
 
         for (let coment of coments) {
@@ -103,7 +97,7 @@ async function getComents() {
 
             } else {
                 coment.valoracion = "⭐⭐⭐⭐⭐";
-            };
+            }
         }
 
         app.comentarios = coments;
@@ -111,21 +105,19 @@ async function getComents() {
 
     } catch (e) {
         console.log(e);
+        app.comentarios = null;
+        admin.comentarios = null;
+
     }
 }
-
-
-
-
 
 async function addComent() {
 
     const coment = {
         idjuego: window.location.pathname.substr(window.location.pathname.lastIndexOf('/') + 1),
         comentario: document.querySelector('input[name=comentario]').value,
-        valoracion: document.querySelector('select[name=valoracion]').value
+        valoracion: document.querySelector('select[name=valoracioncoment]').value
     }
-
 
     if (comentario.value != '') {
         try {
@@ -136,10 +128,6 @@ async function addComent() {
                 body: JSON.stringify(coment)
             });
 
-
-            const c = await response.json();
-            console.log(c);
-
             //app.comentarios.push(c);
 
             getComents();
@@ -148,6 +136,6 @@ async function addComent() {
             console.log(e);
         }
     } else {
-        alert("flaco completa todo");
+        alert("Completa los datos");
     }
 }

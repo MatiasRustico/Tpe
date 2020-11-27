@@ -1,9 +1,8 @@
 <?php
-include_once "app/views/games.view.php";
-include_once "app/views/admin.view.php";
 include_once "app/models/games.model.php";
 include_once "app/models/categories.model.php";
-include_once "app/models/games.model.php";
+include_once "app/views/games.view.php";
+include_once "app/views/admin.view.php";
 include_once "app/helpers/auth.helper.php";
 
 class CategoriesController {
@@ -24,8 +23,8 @@ class CategoriesController {
     }
 
     function insertCategorie(){
-        //veririca
-        $this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
         $categorie = $_POST['categorie'];
         $descripcion = $_POST['descripcion'];
         
@@ -41,8 +40,8 @@ class CategoriesController {
     }
 
     function editCategorie(){
-        //veririca
-        $this->authHelper->checkLogged();
+        //Verifica
+        $this->authHelper->checkPermit();
 
         $id = $_POST['categorie_id'];
         $nombre = $_POST['nombre'];
@@ -69,15 +68,15 @@ class CategoriesController {
         $this->view->showCategorie($categories, $categorie, $games, $id);
     }
 
-    function confirmDeleteCategorie($id){
-        //veririca
-        $this->authHelper->checkLogged();
+    function deleteCategorie($id){
+        //Verifica
+        $this->authHelper->checkPermit();
 
         $this->modelCategories->removeCategorie($id);
         header("Location: " . BASE_URL . "admin" ); 
     }
 
-    function deleteCategorie($id){
+    function confirmDeleteCategorie($id){
 
         $categorie = $this->modelCategories->getCategorie($id);
         $nameCategorie = $categorie->nombre;

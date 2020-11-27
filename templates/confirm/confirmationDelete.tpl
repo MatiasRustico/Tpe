@@ -15,8 +15,8 @@
         
         <div class="formulariologin" style="aling-items:center;height:100%"> 
 
-            <h2 style="color:white">¿Confirmar eliminado del usuario {$user}?<h2>
-            <a href="confirmdeleteuser/{$id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Confirmar</a>
+            <h2 style="color:white">¿Confirmar eliminado del juego {$game} ?<h2>
+            <a href="deletegame/{$id}" class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Confirmar</a>
             <a href="http://localhost/proyectos/tpe/games"  class="botoningreso" style="margin:20px;color:black;text-decoration:none;font-size:20px;padding:5px 15px">Cancelar</a>
 
         </div>

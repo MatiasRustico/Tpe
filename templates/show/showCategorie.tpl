@@ -8,6 +8,7 @@
     <title>Categories</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/icon.png" type="icon" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
 </head>
 
 
@@ -35,10 +36,38 @@
     </div>
 
     <article class="tablausuarios">
-        <section>   
+        <section class="fondoTabla">   
 
 
-            {include "templates/headerTable.tpl"}
+            <table id="tabla">
+                <thead>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        Categoria
+                    </th>
+                    <th>
+                        Descripcion
+                    </th>
+                    <th>
+                        Valoracion
+                    </th>
+                    {if isset($smarty.session.PERMIT)}
+                        <th>
+                            Editar
+                        </th>
+                        
+                        <th>
+                            Borrar
+                        </th>
+                    {/if}
+                    
+                </thead>
+                <tbody id="ingresardatos">
 
                     {foreach from=$games item=game}
 
@@ -46,8 +75,9 @@
 
                         {if $game->valoracion eq 5 }
                             <tr class="logroHoras" style="height:30px">
+                            
                         {else}
-                            <tr style="height:30px">
+                            <tr style="height:30px;background-color:rgba(0, 0, 0, 0)">
                         {/if}
 
                         <!--// nombre-->

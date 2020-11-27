@@ -8,7 +8,7 @@ class StaticView {
 
         $smarty = New Smarty();
 
-        $smarty->display('templates/showHome.tpl');
+        $smarty->display('templates/show/showHome.tpl');
 
     }
 
@@ -16,16 +16,12 @@ class StaticView {
 
         $smarty = New Smarty();
 
-        $smarty->display('templates/showMarket.tpl');
+        $smarty->display('templates/show/showMarket.tpl');
        
     }
-
 
     function showError($ms){
         echo ($ms);
     }
     
-
-
-
 }

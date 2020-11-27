@@ -59,14 +59,6 @@ class ComentsModel {
     }
 
 
-
-    /*function deleteComent($id){
-        $query = $this->db->prepare('DELETE FROM comentarios WHERE id = ?');
-        $query->execute([$id]);
-    }*/
-
-
-
     function get($id) {
         $query = $this->db->prepare('SELECT * FROM comentarios WHERE id = ?');
         $query->execute([$id]);

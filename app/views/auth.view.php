@@ -6,7 +6,7 @@ class AuthView {
 
         $smarty = New Smarty();
         $smarty->assign('error', $error);
-        $smarty->display('templates/showLogIn.tpl');
+        $smarty->display('templates/show/showLogIn.tpl');
   
     }
 
@@ -14,7 +14,7 @@ class AuthView {
 
         $smarty = New Smarty();
         $smarty->assign('error', $error);
-        $smarty->display('templates/showRegister.tpl');
+        $smarty->display('templates/show/showRegister.tpl');
   
     }
 

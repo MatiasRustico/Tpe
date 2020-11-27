@@ -14,7 +14,7 @@ class AdminView {
 
         $smarty->assign('users', $users);
 
-        $smarty->display('templates/showAdmin.tpl');
+        $smarty->display('templates/show/showAdmin.tpl');
 
     }
 
@@ -27,7 +27,7 @@ class AdminView {
 
         $smarty->assign('user', $user);
 
-        $smarty->display('templates/confirmationDeleteUser.tpl');
+        $smarty->display('templates/confirm/confirmationDeleteUser.tpl');
 
     }
 
@@ -39,7 +39,7 @@ class AdminView {
 
         $smarty->assign('game', $game);
 
-        $smarty->display('templates/confirmationDelete.tpl');
+        $smarty->display('templates/confirm/confirmationDelete.tpl');
 
     }
 
@@ -52,7 +52,7 @@ class AdminView {
         $smarty->assign('categorie', $categorie);
 
 
-        $smarty->display('templates/confirmationDeleteCategorie.tpl');
+        $smarty->display('templates/confirm/confirmationDeleteCategorie.tpl');
 
     }
 

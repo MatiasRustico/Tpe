@@ -19,7 +19,7 @@ class ApiUsersController {
         return json_decode($this->data);
     }
 
-    //obtenemos por parametro la id del juego del cual queremos mostrar los comentaios
+    //obtenemos por parametro a los usuarios
     public function getUsers(){
 
         //llamamos al modelo para buscarlos

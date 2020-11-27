@@ -6,7 +6,7 @@ include_once "app/helpers/auth.helper.php";
 
 class AuthController {
 
-    
+
     private $view;
     private $model;
     private $authHelper;
@@ -22,10 +22,11 @@ class AuthController {
     }
 
     function verifyUser(){
+
         $userForm = $_POST['user'];
         $password = $_POST['password'];
         
-        if (empty($userForm) || empty($password)) {
+        if (empty($userForm) || empty($password)){
             $this->view->showLogIn('Faltan datos obligatorios ⚠');
             die();
         }
@@ -34,40 +35,42 @@ class AuthController {
         
         if ($user && password_verify($password, $user->pass)){
 
-
             $this->authHelper->logIn($user);
             
-
             header("Location: " . BASE_URL . "home"); 
-        }else{
+
+        }
+        else{
             $this->view->showLogIn('CREDENCIALES INVALIDAS ⚠');
         }
 
     }
 
     function logOut(){
+        $this->authHelper->checkLogged();
         $this->authHelper->logOut();
     }
-
 
     function showRegister(){
         $this->view->showRegister();  
     }
 
     function verifyRegister(){
+
         $userForm = $_POST['user'];
         $password = $_POST['password'];
         $email = $_POST['email'];
         
         if (empty($userForm) || empty($password) || empty($email)) {
+
             $this->view->showRegister('Faltan datos obligatorios ⚠');
             die();
+
         }
 
         $hash = password_hash($password, PASSWORD_DEFAULT);
        
         $id = $this->model->addUser($userForm, $hash, $email);
-        
 
         $user = $this->model->getByUser($userForm);
         $this->authHelper->logIn($user);

@@ -34,15 +34,6 @@
                 </div>
                 {/if}
 
-                <!--Captcha-->
-                <!--<label for="captcha">Verificacion:</label>
-                <input class="introducircaptcha" type="text" id="introducircaptcha" placeholder="Ingrese el captcha" value="" required maxlength="5" />
-                <label for="captcha">Captcha:</label>
-                <div class="captchareload">
-                    <input class="textcaptcha" type="text" id="textcaptcha" value="" readonly />
-                    <button class="reload" id="reload">↻</button>
-                </div>-->
-
                 <button class="botonlogin" id="botoninicio">Log In</button>
                 <a href="http://localhost/proyectos/tpe/home" class="botonlogin jsCartelera botonSFondo" id="botoninicio">Return Home</a> 
                 <label for="password">¿No tienes cuenta? <a href="http://localhost/proyectos/tpe/register" class="botonlogin jsCartelera botonSFondo" id="botoninicio">Registrate</a></label>

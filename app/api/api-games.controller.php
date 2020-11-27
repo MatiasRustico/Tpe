@@ -22,11 +22,9 @@ class ApiGamesController {
         return json_decode($this->data);
     }
 
-
-
     public function getAll($params = null){
         //verifica
-        //$this->authHelper->checkLogged();
+        //$this->authHelper->checkPermit();
 
         $parametros = [];
 
@@ -53,7 +51,7 @@ class ApiGamesController {
 
     public function getOne($params = null){ //params es un array asociativo con los parametros de la ruta
         //verifica
-        //$this->authHelper->checkLogged();
+        //$this->authHelper->checkPermit();
 
         $id = $params[':ID']; 
         $game = $this->model->getOneGame($id);
@@ -69,7 +67,7 @@ class ApiGamesController {
 
     function deleteOne($params = null){
         //verifica
-        //$this->authHelper->checkLogged();
+        //$this->authHelper->checkPermit();
 
         $id = $params[':ID'];
         $success = $this->model->remove($id);
@@ -84,7 +82,7 @@ class ApiGamesController {
 
     public function add($params = null){
         //verifica
-        //$this->authHelper->checkLogged();
+        //$this->authHelper->checkPermit();
 
         $body = $this->getData();
 
@@ -107,7 +105,7 @@ class ApiGamesController {
 
     public function update($params = null){
         //verifica
-        //$this->authHelper->checkLogged();
+        //$this->authHelper->checkPermit();
 
         $idGame = $params[':ID'];
 
